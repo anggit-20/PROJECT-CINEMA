@@ -222,11 +222,11 @@
           </div><!-- /.col -->
           <div class="col-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Enjoy Your Movie <br>Let's Complete the Orders</li>
+              <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's login to make orders</li>
               
             </ol>
           </div><!-- /.col -->
-          <button type="button" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Time</button>
+          
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -239,7 +239,7 @@
         
             <div class="card-header">
             <h4 class="card-title">
-                Detail Pemesanan Ticket
+                Tambah Film Baru
             </h4>
             </div>
             <div class="card-body">
@@ -293,7 +293,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">Bukti Pembayaran</label>
+                    <label for="exampleInputFile">Thumbnail (Poster)</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="exampleInputFile">
@@ -308,17 +308,11 @@
             </div>
         </div>
 
-        <div class="callout callout-warning">
-                  <h5>Silahkan lakukan pembyaran</h5>
-                  <p>Sebelum tenggat waktu habis!</p>
-        </div>
+        <button type="button" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Simpan</button>
             </div>
             <!-- /.card -->
           </section>
           <!-- right col -->
-
-          <button type="button" class="btn btn-block btn-primary" style="width: 200px">Selesai</button>
-
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->

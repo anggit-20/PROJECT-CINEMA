@@ -857,7 +857,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's login to make orders</li>
+              <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's Buy Your Ticket Here!</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -886,13 +886,16 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6 p-4">
           <div class="title">
-                <h2 class="m-0">title</h2>
+                <h2 class="m-0"><strong>title</strong></h2>
                 <h3>genre</h3>
-            </div>
+          </div>
             <div class="box-info row">
                 <div class="col-4">age</div>
                 <div class="col-4">durat</div>
                 <div class="col-4">studio</div>
+            </div>
+            <div class="harga pt-3">
+            <p><strong>Rp 35.000</strong></p>
             </div>
           </div> 
          
@@ -903,10 +906,9 @@
         
           <div class="date-info">
             <div class="row">
-            <div class="col">
+            
             <div class="col">
             <button type="button" class="btn btn-block btn-primary">1</button>
-            </div>
             </div>
             <div class="col">
             <button type="button" class="btn btn-block btn-primary">2</button>
@@ -917,25 +919,11 @@
             <div class="col">
             <button type="button" class="btn btn-block btn-primary">4</button>
             </div>
-          </div>
-          </div>
-
-          <div class="card card-primary mt-3">
-                    <div class="card-header">
-                      <h4 class="card-title w-100">
-                        <a class="d-block w-100" data-toggle="collapse" href="#collapseOne">
-                          Harga Ticket Weekday
-                        </a>
-                      </h4>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                      <div class="card-body">
-                        Anim pariatur cliche reprehenderit
-                      </div>
-                    </div>
+            
+            </div>
           </div>
 
-          <div class="buy ticket">
+          <div class="buy ticket w-300">
             <button type="button" class="btn btn-block btn-primary">Buy Ticket</button>
           </div>
 

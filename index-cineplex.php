@@ -26,7 +26,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
 </head>
-<div class="wrapper">
+
+<div class="wrapper black">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
