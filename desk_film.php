@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Aneka Cinema | Movie</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -874,7 +874,7 @@
             <!-- small box -->
             <div class="small-box bg-black">
               <div class="inner">
-              <img style="width: 200px; height: 300px;" class="" src="theme/dist/img/Aladdin-2019.jpeg">
+              <img style="width: 150px; height: 200px;" class="" src="theme/dist/img/Aladdin-2019.jpeg">
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -886,7 +886,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6 p-4">
           <div class="title">
-                <h2>title</h2>
+                <h2 class="m-0">title</h2>
                 <h3>genre</h3>
             </div>
             <div class="box-info">
@@ -895,11 +895,11 @@
           </div> 
          
           <div class="sinopsis p-3">
-            <p>jdshflewhtfrioensdjfhwureuhewrfalryhfuwfncmwhudfdhweiofrweifksdl</p>
+          <p>njkapoerefsnvhoiqwasdnhb</p>
           </div>
         
         
-          <div class="date-info col-5">
+          <div class="date-info">
             <div class="row">
             <div class="col">
             <div class="col">
@@ -918,7 +918,7 @@
           </div>
           </div>
 
-          <div class="harga">
+          <!-- <div class="harga">
           <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Harga</h3>
@@ -932,12 +932,12 @@
               <div class="card-body">
                 Harga Weekday
               </div>
-          </div>
+          </div> -->
 
-          <div class="next">
+          <!-- <div class="next">
           <button type="button" class="btn btn-block btn-primary">Buy Ticket</button>
           </div>
-        
+         -->
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
