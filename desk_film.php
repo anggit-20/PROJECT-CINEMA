@@ -881,48 +881,63 @@
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
+            
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-black">
-              <div class="inner">
-              <img style="width: 200px; height: 300px;" class="" src="theme/dist/img/bila esok ibu tiada.jpeg">
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <div class="col-lg-3 col-6 p-4">
+          <div class="title">
+                <h2>title</h2>
+                <h3>genre</h3>
+            </div>
+            <div class="box-info">
+                age
+            </div>
+          </div> 
+         
+          <div class="sinopsis p-3">
+            <p>jdshflewhtfrioensdjfhwureuhewrfalryhfuwfncmwhudfdhweiofrweifksdl</p>
+          </div>
+        
+        
+          <div class="date-info col-5">
+            <div class="row">
+            <div class="col">
+            <div class="col">
+            <button type="button" class="btn btn-block btn-primary">1</button>
+            </div>
+            </div>
+            <div class="col">
+            <button type="button" class="btn btn-block btn-primary">2</button>
+            </div>
+            <div class="col">
+            <button type="button" class="btn btn-block btn-primary">3</button>
+            </div>
+            <div class="col">
+            <button type="button" class="btn btn-block btn-primary">4</button>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-black">
-              <div class="inner">
-              <img style="width: 200px; height: 300px;" class="" src="theme/dist/img/bila esok ibu tiada.jpeg">
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-black">
-              <div class="inner">
-              <img style="width: 200px; height: 300px;" class="" src="theme/dist/img/bila esok ibu tiada.jpeg">
+
+          <div class="harga">
+          <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Harga</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
               </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+              <div class="card-body">
+                Harga Weekday
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
           </div>
-          <!-- ./col -->
-        </div>
+
+          <div class="next">
+          <button type="button" class="btn btn-block btn-primary">Buy Ticket</button>
+          </div>
+        
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
