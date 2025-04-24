@@ -218,7 +218,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Aneka Cinema</h1>
+            <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
           </div><!-- /.col -->
           <div class="col-6">
             <ol class="breadcrumb float-sm-right">
@@ -308,7 +308,7 @@
             </div>
         </div>
 
-        <div class="callout callout-warning">
+        <div class="callout callout-warning text-center">
                   <h5>Silahkan lakukan pembyaran</h5>
                   <p>Sebelum tenggat waktu habis!</p>
         </div>

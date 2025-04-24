@@ -853,7 +853,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Aneka Cinema</h1>
+            <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -887,7 +887,7 @@
           <div class="col-lg-3 col-6 p-4">
           <div class="title">
                 <h2 class="m-0"><strong>title</strong></h2>
-                <h3>genre</h3>
+                <h4>genre</h4>
           </div>
             <div class="box-info row">
                 <div class="col-4">age</div>
@@ -900,32 +900,30 @@
           </div> 
          
           <div class="sinopsis p-3">
-          <p>njkapoerefsnvhoiqwasdnhb</p>
+          <p>sinopsis</p>
           </div>
         
         
-          <div class="date-info">
-            <div class="row">
-            
-            <div class="col">
-            <button type="button" class="btn btn-block btn-primary">1</button>
-            </div>
-            <div class="col">
-            <button type="button" class="btn btn-block btn-primary">2</button>
-            </div>
-            <div class="col">
-            <button type="button" class="btn btn-block btn-primary">3</button>
-            </div>
-            <div class="col">
-            <button type="button" class="btn btn-block btn-primary">4</button>
-            </div>
-            
-            </div>
-          </div>
-
-          <div class="buy ticket w-300">
-            <button type="button" class="btn btn-block btn-primary">Buy Ticket</button>
-          </div>
+          
+          <div class="container text-center">
+  <div class="row">
+    <div class="col"><button type="button" class="btn btn-outline-secondary">
+      Date
+</button></div>
+    <div class="col">
+      Time
+    </div>
+    <div class="col">
+      Time
+    </div>
+    <div class="col">
+      Time
+    </div>
+  </div>
+</div>
+          
+            <button type="button" class="btn btn-block btn-primary mt-3">Buy Ticket</button>
+          
 
           <!-- <div class="harga">
           <div class="card">
