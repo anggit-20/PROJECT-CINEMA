@@ -933,6 +933,11 @@
                         Anim pariatur cliche reprehenderit
                       </div>
                     </div>
+          </div>
+
+          <div class="buy ticket">
+            <button type="button" class="btn btn-block btn-primary">Buy Ticket</button>
+          </div>
 
           <!-- <div class="harga">
           <div class="card">
