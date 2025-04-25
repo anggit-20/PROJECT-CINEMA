@@ -222,7 +222,7 @@
           </div><!-- /.col -->
         
           </div><!-- /.col -->
-          <button type="button" class="btn btn-block btn-primary">Add New Movie</button>
+          <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     <!-- /.content-header -->

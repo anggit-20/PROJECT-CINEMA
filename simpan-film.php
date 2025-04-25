@@ -2,6 +2,7 @@
 
 include 'koneksi.php'; // file koneksi
 
+// mengambil data dari form
 $judul = $_POST['judul'];
 $tahun = $_POST['tahun'];
 $durasi = $_POST['durasi'];
