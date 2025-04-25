@@ -136,7 +136,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($films as $film) : ?>
             <div class="small-box" style="background-color: #99090c;">
               <div class="inner">
-              <img style="width: 150px; height: 200px;" src="theme/dist/tumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
+              <img style="width: 150px; height: 200px;" src="theme/dist/thumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>

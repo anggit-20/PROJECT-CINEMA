@@ -1,3 +1,22 @@
+<?php
+// jika belum login redirect ke halaman login
+session_start();
+$email = $_SESSION['email'];
+if(!isset($email)) {
+  header('Location:login-admin.php');
+}
+
+?>
+
+<?php
+include 'koneksi.php';
+
+$stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
+$films = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,29 +71,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li> -->
-
-
+     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -98,18 +95,6 @@
           <a href="#" class="d-block">Admin Cinema</a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      <!-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -146,7 +131,7 @@
           <!-- ./col -->
         </div>
 
-
+        <!-- tabel riwayat input data film-->
         <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Riwayat Input Film</h3>
@@ -165,21 +150,25 @@
                     <th>studio</th>
                     <th>Aksi</th>
                   </tr>
+                  </thead>
+
+                  <tbody>
+                    <?php foreach ($films as $film):?>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $film['judul']; ?></td>
+                    <td><?php echo $film['tahun']; ?></td>
+                    <td><?php echo $film['durasi']; ?></td>
+                    <td><?php echo $film['genre']; ?></td>
+                    <td><?php echo $film['usia']; ?></td>
+                    <td><?php echo $film['harga']; ?></td>
+                    <td><?php echo $film['sinopsis']; ?></td>
+                    <td><?php echo $film['studio']; ?></td>
                     <td><button type="button" class="btn btn-danger">Hapus</button>
                     <button type="button" class="btn btn-warning">Edit</button></td>
                   </tr>
-
-                  </thead>
-                  <tbody>
+                  <?php endforeach; ?>
+                  </tbody>
+                  
                   </tfoot>
                 </table>
               </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
   <div class="card">
     <div class="card-body login-card-body">
 
-      <form action="login.php" method="post">
+      <form action="login-action-admin.php" method="POST">
         <div class="input-group mb-3">
           <input type="text" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
