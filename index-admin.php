@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
+    
+    </style>
 </head>
 <div class="wrapper">
 
@@ -81,8 +83,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Aneka Cinema</span>
+      <img src="theme/dist/img/aneka-cinema.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light" >Aneka Cinema</span>
     </a>
 
     <!-- Sidebar -->
@@ -90,10 +92,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Dashboard</a>
+          <a href="#" class="d-block">Admin Cinema</a>
         </div>
       </div>
 
@@ -128,7 +130,11 @@
           </div><!-- /.col -->
         
           </div><!-- /.col -->
-          <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button>
+          <!-- <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button> -->
+          <button type="button" class="btn btn-block btn-danger" style="border-radius: 20px;">
+  <a href="form-add-movie.php" style="color: white; text-decoration: none;">Add New Movie</a>
+</button>
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     <!-- /.content-header -->
@@ -139,6 +145,46 @@
             <h2></h2>
           <!-- ./col -->
         </div>
+
+
+        <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Riwayat Input Film</h3>
+              </div>
+        <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>judul</th>
+                    <th>tahun</th>
+                    <th>durasi</th>
+                    <th>genre</th>
+                    <th>usia</th>
+                    <th>harga</th>
+                    <th>sinopsis</th>
+                    <th>studio</th>
+                    <th>Aksi</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-warning">Edit</button></td>
+                  </tr>
+
+                  </thead>
+                  <tbody>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
         
         <div class="card">
               <div class="card-header">
@@ -173,7 +219,7 @@
                     <td>DANA</td>
                   </tr>
                   <tr>
-                    <td>7/10/2007</td>
+                    <!-- <td>7/10/2007</td>
                     <td>12.30</td>
                     <td>Jumbo</td>
                     <td>3</td>
@@ -181,7 +227,7 @@
                     <td>Ukik</td>
                     <td>2B,3B,4B</td>
                     <td>150.000,00</td>
-                    <td>Transfer BCA</td>
+                    <td>Transfer BCA</td> -->
                   </tr>
                   </tbody>
                   <tfoot>
@@ -250,25 +296,11 @@
                       Explorer 4.0
                     </td>
                     <td>Win 95+</td>
-                    <!-- <td> 4</td>
-                    <td>X</td> -->
-                  </tr>
-                  <tr>
-                    <!-- <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td> -->
-                    <!-- <td>-</td>
-                    <td>U</td> -->
                   </tr>
                   </tbody>
                   <tfoot>
                   <tr>
                   <th>Tanggal</th>
-                    <!-- <th>Waktu</th>
-                    <th>Judul Film</th>
-                    <th>Studio</th>
-                    <th>Nama</th>
-                    <th>Nomor Kursi</th> -->
                     <th>Total Pembayaran</th>
                     <th>Jumlah Akhir</th>
                   </tr>
@@ -313,62 +345,15 @@
               <!-- /.card-footer -->
             </div>
             <!-- /.card -->
-
-            <!-- Calendar -->
-            <!-- <div class="card bg-gradient-success">
-              <div class="card-header border-0">
-
-                <h3 class="card-title">
-                  <i class="far fa-calendar-alt"></i>
-                  Calendar
-                </h3> -->
-                <!-- tools card -->
-                <!-- <div class="card-tools"> -->
-                  <!-- button with a dropdown -->
-                  <!-- <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div> -->
-                <!-- /. tools -->
-              <!-- </div> -->
-              <!-- /.card-header -->
-              <!-- <div class="card-body pt-0"> -->
-                <!--The calendar -->
-                <!-- <div id="calendar" style="width: 100%"></div>
-              </div> -->
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
+  <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
-  </footer> -->
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
