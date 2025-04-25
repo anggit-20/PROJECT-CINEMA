@@ -6,6 +6,12 @@ if (isset($_GET['id'])) {
   $stmt = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
   $stmt->execute([$id]);
   $film = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  // Ambil semua jam tayang berdasarkan id film
+$stmt_jam = $conn->prepare("SELECT * FROM showtime WHERE film_id = ?");
+$stmt_jam->execute([$id]);
+$jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
+
 }
 
 ?>
@@ -102,7 +108,7 @@ if (isset($_GET['id'])) {
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -127,7 +133,7 @@ if (isset($_GET['id'])) {
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-black">
+            <div class="small-box" style="background-color: #99090c;">
               <div class="inner">
               <img style="width: 150px; height: 200px;" class="" src="theme/dist/img/">
               </div>
@@ -145,9 +151,11 @@ if (isset($_GET['id'])) {
                 <h4><?php echo $film['genre']; ?></h4>
           </div>
             <div class="box-info row">
-                <div class="col-4"><?php echo $film['usia']; ?></div>
-                <div class="col-4"><?php echo $film['durasi']; ?></div>
-                <div class="col-4"><?php echo $film['studio']; ?></div>
+                <div class="col-6"><?php echo $film['durasi']; ?>menit</div>
+                <div class="col-6"> studio <?php echo $film['studio']; ?></div>
+            </div>
+            <div>
+              <div class="col-4"><?php echo $film['usia']; ?></div>
             </div>
             <div class="harga pt-3">
             <p><strong>Rp <?php echo $film['harga']; ?></strong></p>
@@ -165,19 +173,22 @@ if (isset($_GET['id'])) {
     <div class="col"><button type="button" class="btn btn-outline-secondary">
       Date
 </button></div>
-    <div class="col">
-      Time
+<div class="container text-center mt-3">
+  <div class="row">
+    <div class="col-12 mb-2">
+      <h5 class="text-white">Jam Tayang</h5>
     </div>
-    <div class="col">
-      Time
-    </div>
-    <div class="col">
-      Time
-    </div>
+    <?php foreach ($jam_tayang as $jam): ?>
+      <div class="col-3">
+        <button class="btn btn-outline-light mb-2"><?php echo $jam['jam']; ?></button>
+      </div>
+    <?php endforeach; ?>
   </div>
 </div>
+
+</div>
           
-            <button type="button" class="btn btn-block btn-primary mt-3"><a href="form-reserv.php?id=<?= $film['id_film'] ?>">Buy Ticket</a></button>
+            <button type="button" class="btn btn-block mt-3" style="background-color: #99090c;"><a href="form-reserv.php?id=<?= $film['id_film'] ?>">Buy Ticket</a></button>
           
         <!-- /.row -->
         <!-- Main row -->

@@ -10,7 +10,6 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +99,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -117,7 +116,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div><!-- /.col -->
 
         
-          <button type="button" class="btn btn-block btn-primary rounded-pill" style="width: 80px; margin: 10px;">Login</button>
+          <button type="button" class="btn btn-block rounded-pill" style="width: 80px; margin: 10px; background-color: #99090c; color: white;">Login</button>
          
 
         </div><!-- /.row -->
@@ -135,7 +134,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- small box -->
             <!-- box now playing -->
             <?php foreach ($films as $film) : ?>
-            <div class="small-box bg-black">
+            <div class="small-box" style="background-color: #99090c;">
               <div class="inner">
               <img style="width: 150px; height: 200px;" src="theme/dist/tumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
               </div>

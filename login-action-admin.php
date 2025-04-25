@@ -1,16 +1,13 @@
 <?php 
 
-
-// echo $_POST['email'];
-// echo $_POST['password'];
 session_start();
 
-if ($_POST ['email'] == "Khoirunnisa237648@gmail.com" && $_POST ['password'] == "12345678")
+if ($_POST ['email'] == "cinemaaneka@gmail.com" && $_POST ['password'] == "admincinema123")
 {
     $_SESSION ['email'] = $_POST['email'];
-    header('Location:index.php');
+    header('Location:index-admin.php');
 } else {
-    header ('Location:login.php');
+    header ('Location:login-admin.php');
 };
 
 ?>

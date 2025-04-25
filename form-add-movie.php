@@ -145,7 +145,7 @@
                     <div class="col-8">
                     <select class="form-select form-control" aria-label="Default select example" name="usia">
   <option selected>Pilih Batas Usia</option>
-  <option value="SU">Semua Umur</option>
+  <option value="Semua Umur">Semua Umur</option>
   <option value="13+">13+</option>
   <option value="17+">17+</option>
   <option value="21+">21+</option>
@@ -175,6 +175,11 @@
 </select>
                     </div>
                   </div>
+                  <label>Jam Tayang:</label><br>
+<input type="checkbox" name="jam_tayang[]" value="13:00"> 13:00<br>
+<input type="checkbox" name="jam_tayang[]" value="14:05"> 14:05<br>
+<input type="checkbox" name="jam_tayang[]" value="17:15"> 17:15<br>
+<input type="checkbox" name="jam_tayang[]" value="19:45"> 19:45<br>
                   <div class="form-group">
                     <label for="exampleInputFile">Thumbnail (Poster)</label>
                     <div class="input-group">

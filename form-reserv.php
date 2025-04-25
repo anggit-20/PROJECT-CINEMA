@@ -95,7 +95,7 @@ if (isset($_GET['id'])) {
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -118,7 +118,7 @@ if (isset($_GET['id'])) {
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="card">
+        <div class="card" style="background-color: #99090c;">
         
             <div class="card-header">
             <h4 class="card-title">
@@ -126,35 +126,35 @@ if (isset($_GET['id'])) {
             </h4>
             </div>
             <div class="card-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action="proses-pemesanan.php">
                 <div class="card">
               <div class="card-header">
-                <h3 class="card-title"><?php echo $film['judul']; ?></h3></br>
-                <h3 class="card-title">Studio <?php echo $film['studio']; ?></h3>
+                <h3 class="card-title" style="color: black;"><strong><?php echo $film['judul']; ?></strong></h3></br>
+                <h3 class="card-title" style="color: black;">Studio <?php echo $film['studio']; ?></h3>
               </div>
           
             </div>
 
                   <div class="form-group row">
-                    <label class="col-4 col-form-label">Nama</label>
+                    <label class="col-4 col-form-label" style="color: black;">Nama</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="nama">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-4 col-form-label">Email</label>
+                    <label class="col-4 col-form-label" style="color: black;">Email</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="email">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-4 col-form-label">Lokasi</label>
+                    <label class="col-4 col-form-label" style="color: black;">Lokasi</label>
                     <div class="col-8">
                       <input type="text" class="form-control" disabled>
                     </div>
                   </div>
                   <div class="container text-center">
-  <div class="row">
+                  <div class="row">
                   <div class="col"><button type="button" class="btn btn-outline-secondary">Date</button></div>
                   <!-- <div class="form-group row"> -->
                     <div class="col-8">
@@ -164,26 +164,49 @@ if (isset($_GET['id'])) {
                     </div>
                   </div>
                 
-                  <div class="layout-seat">
+                  <div class="layout-seat" style="margin-top: 15px;">
                     <img style="width: 100%;" src="theme/dist/img/coba-layout.png">
                   </div>
 
+                  <div class="form-group row mt-3">
+  <label class="col-4 col-form-label" style="color: white;">Masukkan Kursi</label>
+  <div class="col-4">
+    <input type="text" id="inputKursi" class="form-control" placeholder="Contoh:A1">
+  </div>
+  <div class="col-4">
+    <button type="button" class="btn btn-success" onclick="tambahKursi()">Tambah</button>
+  </div>
+</div>
+
+<!-- Daftar kursi yang dipilih -->
+<div class="form-group row">
+  <label class="col-4 col-form-label" style="color: white;">Kursi Terpilih</label>
+  <div class="col-8">
+    <P id="daftarKursi" class="text-white"></P>
+  </div>
+</div>
+
+<input type="hidden" name="id_film" value="<?php echo $film['id_film']; ?>">
+
                   <div class="card-body p-3">
-                <table class="table table-striped">
+                  <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
+                      <th>Seat</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
-                  </form>
-            </div>
-        </div>
+                  <tbody>
+                  <tr>
+                      <td>Task</td>
+                      <td>Progress</td>
+                    </tr>
+                  </tbody>
+                </table>
+                  </div>
 
-        <button type="button" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Simpan</button>
-            </div>
+            <button type="submit" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Simpan</button>
+            </form>
             <!-- /.card -->
           </section>
           <!-- right col -->
@@ -244,5 +267,43 @@ if (isset($_GET['id'])) {
 <script src="theme/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="theme/dist/js/pages/dashboard.js"></script>
+<script>
+  let kursiTerpilih = [];
+
+  function tambahKursi() {
+    const input = document.getElementById('inputKursi');
+    const value = input.value.trim().toUpperCase();
+    
+    if (value && !kursiTerpilih.includes(value)) {
+      kursiTerpilih.push(value);
+      updateDaftarKursi();
+      input.value = '';
+    }
+  }
+
+  function updateDaftarKursi() {
+    const daftar = document.getElementById('daftarKursi');
+    daftar.innerHTML = '';
+    
+    kursiTerpilih.forEach((kursi, index) => {
+      const li = document.createElement('li');
+      li.textContent = kursi + " ";
+      
+      const hapusBtn = document.createElement('button');
+      hapusBtn.textContent = 'Hapus';
+      hapusBtn.className = 'btn btn-secondary btn-sm ml-2';
+      hapusBtn.onclick = () => {
+        kursiTerpilih.splice(index, 1);
+        updateDaftarKursi();
+      };
+
+      li.appendChild(hapusBtn);
+      daftar.appendChild(li);
+    });
+
+    document.getElementById('kursiTerpilihInput').value = kursiTerpilih.join(',');
+  }
+</script>
+
 </body>
 </html>

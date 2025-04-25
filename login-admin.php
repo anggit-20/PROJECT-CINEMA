@@ -25,7 +25,7 @@
 
       <form action="login.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="email" class="form-control" placeholder="Username">
+          <input type="text" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
