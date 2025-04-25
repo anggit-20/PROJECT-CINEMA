@@ -243,35 +243,35 @@
             </h4>
             </div>
             <div class="card-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action>
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Judul</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="judul">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Tahun Rilis</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="tahun">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Durasi</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="durasi">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Genre</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="genre">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Usia</label>
                     <div class="col-8">
-                    <select class="form-select form-control" aria-label="Default select example">
+                    <select class="form-select form-control" aria-label="Default select example" name="usia">
   <option selected>Pilih Batas Usia</option>
   <option value="1">Semua Umur</option>
   <option value="2">13+</option>
@@ -283,19 +283,19 @@
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Harga</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="harga">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Sinopsis</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="sinopsis">
                     </div>
                   </div>
                   <div class="form-group row">
                   <label class="col-4 col-form-label">Studio</label>
                     <div class="col-8">
-                    <select class="form-select form-control" aria-label="Default select example">
+                    <select class="form-select form-control" aria-label="Default select example" name="studio">
   <option selected>Pilih Studio</option>
   <option value="1">Studio 1</option>
   <option value="2">Studio 2</option>

@@ -246,22 +246,11 @@
                 <form class="form-horizontal">
                 <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Title</h3>
+                <h3 class="card-title">Judul Film</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  
-                </div>
               </div>
-              <div class="card-body">
-                Start creating your amazing application!
-              </div>
-              <div class="card-footer">
-                Footer
-              </div>
-                </div>
+          
+            </div>
 
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Nama</label>
@@ -271,6 +260,12 @@
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Email</label>
+                    <div class="col-8">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Lokasi</label>
                     <div class="col-8">
                       <input type="text" class="form-control">
                     </div>
@@ -287,41 +282,10 @@
 </select>
                     </div>
                   </div>
-                  <!-- <div class="form-group row">
-                    <label class="col-4 col-form-label">Harga</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control">
+                
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-4 col-form-label">Sinopsis</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                  <label class="col-4 col-form-label">Studio</label> -->
-                    <!-- <div class="col-8">
-                    <select class="form-select form-control" aria-label="Default select example">
-  <option selected>Pilih Studio</option>
-  <option value="1">Studio 1</option>
-  <option value="2">Studio 2</option>
-  <option value="3">Studio 3</option>
-</select> -->
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Thumbnail (Poster)</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
+                  
                   </form>
             </div>
         </div>

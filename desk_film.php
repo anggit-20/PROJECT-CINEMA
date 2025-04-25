@@ -922,7 +922,7 @@
   </div>
 </div>
           
-            <button type="button" class="btn btn-block btn-primary mt-3">Buy Ticket</button>
+            <button type="button" class="btn btn-block btn-primary mt-3"><a href="form-reserv.php">Buy Ticket</a></button>
           
 
           <!-- <div class="harga">
