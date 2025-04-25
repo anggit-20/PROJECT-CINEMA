@@ -7,7 +7,7 @@ global $conn;
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Koneksi Berhasil";
+    // echo "Koneksi Berhasil";
 } catch (PDOException $e) {
     echo "Koneksi Gagal: " . $e->getMessage();
 }
