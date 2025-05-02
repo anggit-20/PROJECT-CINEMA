@@ -239,48 +239,55 @@
         
             <div class="card-header">
             <h4 class="card-title">
-                Tambah Film Baru
+                Pembelian Tiket
             </h4>
             </div>
             <div class="card-body">
                 <form class="form-horizontal">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Judul</label>
+                <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  
+                </div>
+              </div>
+              <div class="card-body">
+                Start creating your amazing application!
+              </div>
+              <div class="card-footer">
+                Footer
+              </div>
+                </div>
+
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Nama</label>
                     <div class="col-8">
                       <input type="text" class="form-control">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-4 col-form-label">Tahun Rilis</label>
+                    <label class="col-4 col-form-label">Email</label>
                     <div class="col-8">
                       <input type="text" class="form-control">
                     </div>
                   </div>
-                  <div class="form-group row">
-                    <label class="col-4 col-form-label">Durasi</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-4 col-form-label">Genre</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-4 col-form-label">Usia</label>
+                  <div class="container text-center">
+  <div class="row">
+    <div class="col"><button type="button" class="btn btn-outline-secondary">
+      Date
+</button></div>
+                  <!-- <div class="form-group row"> -->
                     <div class="col-8">
                     <select class="form-select form-control" aria-label="Default select example">
-  <option selected>Pilih Batas Usia</option>
-  <option value="1">Semua Umur</option>
-  <option value="2">13+</option>
-  <option value="3">17+</option>
-  <option value="3">21+</option>
+  <option selected>Pilih Jam Tayang</option>
 </select>
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label class="col-4 col-form-label">Harga</label>
                     <div class="col-8">
                       <input type="text" class="form-control">
@@ -293,14 +300,14 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                  <label class="col-4 col-form-label">Studio</label>
-                    <div class="col-8">
+                  <label class="col-4 col-form-label">Studio</label> -->
+                    <!-- <div class="col-8">
                     <select class="form-select form-control" aria-label="Default select example">
   <option selected>Pilih Studio</option>
   <option value="1">Studio 1</option>
   <option value="2">Studio 2</option>
   <option value="3">Studio 3</option>
-</select>
+</select> -->
                     </div>
                   </div>
                   <div class="form-group">

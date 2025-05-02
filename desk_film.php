@@ -879,7 +879,7 @@
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        
             </div>
             
           </div>
@@ -890,8 +890,8 @@
                 <h4>genre</h4>
           </div>
             <div class="box-info row">
-                <div class="col-4">age</div>
-                <div class="col-4">durat</div>
+                <div class="col-4">umur</div>
+                <div class="col-4">durasi</div>
                 <div class="col-4">studio</div>
             </div>
             <div class="harga pt-3">
