@@ -244,8 +244,9 @@
                   <thead>
                   <tr>
                     <th>Tanggal</th>
-                    <th>Waktu</th>
+                    <th>Pukul</th>
                     <th>Judul Film</th>
+                    <th>Jumlah Ticket</th>
                     <th>Studio</th>
                     <th>Nama</th>
                     <th>Nomor Kursi</th>
@@ -255,33 +256,39 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
+                    <td>5/5/2025</td>
+                    <td>15.25</td>
+                    <td>Pengepungan di Bukir Duri</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>Ahmad</td>
+                    <td>1A,2A</td>
+                    <td>100.000,00</td>
+                    <td>DANA</td>
                   </tr>
                   <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
+                    <td>7/10/2007</td>
+                    <td>12.30</td>
+                    <td>Jumbo</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>Ukik</td>
+                    <td>2B,3B,4B</td>
+                    <td>150.000,00</td>
+                    <td>Transfer BCA</td>
                   </tr>
                   </tbody>
                   <tfoot>
-                  <tr>
+                  <!-- <tr>
                   <th>Tanggal</th>
-                    <th>Waktu</th>
+                    <th>Pukul</th>
                     <th>Judul Film</th>
                     <th>Studio</th>
                     <th>Nama</th>
                     <th>Nomor Kursi</th>
                     <th>Total Pembayaran</th>
                     <th>Bukti Pembayaran</th>
-                  </tr>
+                  </tr> -->
                   </tfoot>
                 </table>
               </div>
@@ -324,6 +331,61 @@
               </div><!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DataTable Pendapatan</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Tanggal</th>
+                    <!-- <th>Waktu</th>
+                    <th>Judul Film</th>
+                    <th>Studio</th>
+                    <th>Nama</th>
+                    <th>Nomor Kursi</th> -->
+                    <th>Total Pembayaran</th>
+                    <th>Jumlah Akhir</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Trident</td>
+                    <td>Internet
+                      Explorer 4.0
+                    </td>
+                    <td>Win 95+</td>
+                    <!-- <td> 4</td>
+                    <td>X</td> -->
+                  </tr>
+                  <tr>
+                    <!-- <td>Other browsers</td>
+                    <td>All others</td>
+                    <td>-</td> -->
+                    <!-- <td>-</td>
+                    <td>U</td> -->
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Tanggal</th>
+                    <!-- <th>Waktu</th>
+                    <th>Judul Film</th>
+                    <th>Studio</th>
+                    <th>Nama</th>
+                    <th>Nomor Kursi</th> -->
+                    <th>Total Pembayaran</th>
+                    <th>Jumlah Akhir</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
 
             <!-- DIRECT CHAT -->
             <!-- <div class="card direct-chat direct-chat-primary">
