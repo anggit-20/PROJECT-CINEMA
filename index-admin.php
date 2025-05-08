@@ -139,6 +139,46 @@
             <h2></h2>
           <!-- ./col -->
         </div>
+
+
+        <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Riwayat Input Film</h3>
+              </div>
+        <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>judul</th>
+                    <th>tahun</th>
+                    <th>durasi</th>
+                    <th>genre</th>
+                    <th>usia</th>
+                    <th>harga</th>
+                    <th>sinopsis</th>
+                    <th>studio</th>
+                    <th>Aksi</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button type="button" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-warning">Edit</button></td>
+                  </tr>
+
+                  </thead>
+                  <tbody>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
         
         <div class="card">
               <div class="card-header">
@@ -173,7 +213,7 @@
                     <td>DANA</td>
                   </tr>
                   <tr>
-                    <td>7/10/2007</td>
+                    <!-- <td>7/10/2007</td>
                     <td>12.30</td>
                     <td>Jumbo</td>
                     <td>3</td>
@@ -181,7 +221,7 @@
                     <td>Ukik</td>
                     <td>2B,3B,4B</td>
                     <td>150.000,00</td>
-                    <td>Transfer BCA</td>
+                    <td>Transfer BCA</td> -->
                   </tr>
                   </tbody>
                   <tfoot>
@@ -250,25 +290,11 @@
                       Explorer 4.0
                     </td>
                     <td>Win 95+</td>
-                    <!-- <td> 4</td>
-                    <td>X</td> -->
-                  </tr>
-                  <tr>
-                    <!-- <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td> -->
-                    <!-- <td>-</td>
-                    <td>U</td> -->
                   </tr>
                   </tbody>
                   <tfoot>
                   <tr>
                   <th>Tanggal</th>
-                    <!-- <th>Waktu</th>
-                    <th>Judul Film</th>
-                    <th>Studio</th>
-                    <th>Nama</th>
-                    <th>Nomor Kursi</th> -->
                     <th>Total Pembayaran</th>
                     <th>Jumlah Akhir</th>
                   </tr>
@@ -313,53 +339,6 @@
               <!-- /.card-footer -->
             </div>
             <!-- /.card -->
-
-            <!-- Calendar -->
-            <!-- <div class="card bg-gradient-success">
-              <div class="card-header border-0">
-
-                <h3 class="card-title">
-                  <i class="far fa-calendar-alt"></i>
-                  Calendar
-                </h3> -->
-                <!-- tools card -->
-                <!-- <div class="card-tools"> -->
-                  <!-- button with a dropdown -->
-                  <!-- <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                      <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                      <a href="#" class="dropdown-item">Add new event</a>
-                      <a href="#" class="dropdown-item">Clear events</a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">View calendar</a>
-                    </div>
-                  </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div> -->
-                <!-- /. tools -->
-              <!-- </div> -->
-              <!-- /.card-header -->
-              <!-- <div class="card-body pt-0"> -->
-                <!--The calendar -->
-                <!-- <div id="calendar" style="width: 100%"></div>
-              </div> -->
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <!-- <footer class="main-footer">
