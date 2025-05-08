@@ -44,7 +44,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -54,12 +54,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      
     </ul>
 
     </ul>
@@ -88,7 +83,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Log Out</a>
@@ -142,41 +137,19 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($films as $film) : ?>
             <div class="small-box bg-black">
               <div class="inner">
-              <img style="width: 150px; height: 200px;" src="uploads/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
+              <img style="width: 150px; height: 200px;" src="theme/dist/tumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
               <div class="fs-2"><strong><?php echo $film['judul']; ?></strong></div>
             </div>
-            <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php" class="d-block">More Info</a></button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php?id=<?= $film['id_film'] ?>" class="d-block">More Info</a></button>
           </div>
           <?php endforeach; ?>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <!-- <div class="small-box bg-black">
-              <div class="inner">
-              <img style="width: 150px; height: 200px;" src="theme/dist/img/bila esok ibu tiada.jpg">
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <div class="fs-2"><strong>Bila Esok Ibu Tiada</strong></div>
-            </div>
-            <button type="button" class="btn btn-outline-secondary rounded-pill">More Info</button>
-          </div> -->
-          <!-- end box now playing -->
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-         
-                  <!-- ./col -->
-                </div>
-                <!-- /.row -->
-              </div>
+          
+        
+        
               <!-- /.card-footer -->
             </div>
             <!-- /.card -->
