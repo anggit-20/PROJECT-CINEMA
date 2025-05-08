@@ -25,6 +25,11 @@
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
+  <style>
+    .wrapper {
+      color:#99090c;
+    }
+    </style>
 </head>
 <div class="wrapper">
 
@@ -68,10 +73,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">Admin Cinema</a>
         </div>
       </div>
 
@@ -187,7 +192,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Simpan</button>
+        <button type="submit" class="btn btn-block btn-danger" style="width: 80px; margin: 10px;">Simpan</button>
             </div>
             </form>
             <!-- /.card -->

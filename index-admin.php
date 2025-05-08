@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
+    
+    </style>
 </head>
 <div class="wrapper">
 
@@ -81,8 +83,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Aneka Cinema</span>
+      <img src="theme/dist/img/aneka-cinema.png" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light" >Aneka Cinema</span>
     </a>
 
     <!-- Sidebar -->
@@ -90,10 +92,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Dashboard</a>
+          <a href="#" class="d-block">Admin Cinema</a>
         </div>
       </div>
 
@@ -128,7 +130,11 @@
           </div><!-- /.col -->
         
           </div><!-- /.col -->
-          <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button>
+          <!-- <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button> -->
+          <button type="button" class="btn btn-block btn-danger" style="border-radius: 20px;">
+  <a href="form-add-movie.php" style="color: white; text-decoration: none;">Add New Movie</a>
+</button>
+
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     <!-- /.content-header -->
@@ -341,13 +347,13 @@
             <!-- /.card -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
+  <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0
     </div>
-  </footer> -->
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
