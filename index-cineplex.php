@@ -89,7 +89,6 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
 
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -107,17 +106,14 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <div class="col-sm-6">
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
           </div><!-- /.col -->
-
   
           <div class="col-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's login to make orders</li>
             </ol>
           </div><!-- /.col -->
-
         
           <button type="button" class="btn btn-block rounded-pill" style="width: 80px; margin: 10px; background-color: #99090c; color: white;">Login</button>
-         
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -130,10 +126,12 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h3><strong>Now playing</strong></h3>
         <!-- Small boxes (Stat box) -->
         <div class="row mt-2">
+          <!--perulangan untuk menampilkan film-->
+        <?php foreach ($films as $film) : ?> 
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <!-- box now playing -->
-            <?php foreach ($films as $film) : ?>
+            
             <div class="small-box" style="background-color: #99090c;">
               <div class="inner">
               <img style="width: 150px; height: 200px;" src="theme/dist/thumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
@@ -147,16 +145,6 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
           <?php endforeach; ?>
           
-        
-        
-              <!-- /.card-footer -->
-            </div>
-            <!-- /.card -->
-
-            
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
           </section>
           <!-- right col -->
         </div>

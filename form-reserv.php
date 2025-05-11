@@ -103,9 +103,9 @@ if (isset($_GET['id'])) {
           <div class="col-sm-6">
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
           </div><!-- /.col -->
-          <div class="col-6">
+          <div class="col-9">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's login to make orders</li>
+              <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's complete to make orders</li>
               
             </ol>
           </div><!-- /.col -->
@@ -153,16 +153,16 @@ if (isset($_GET['id'])) {
                       <input type="text" class="form-control" disabled>
                     </div>
                   </div>
+                  
+                  
                   <div class="container text-center">
-                  <div class="row">
-                  <div class="col"><button type="button" class="btn btn-outline-secondary">Date</button></div>
                   <!-- <div class="form-group row"> -->
                     <div class="col-8">
                     <select class="form-select form-control" aria-label="Default select example">
                       <option selected>Pilih Jam Tayang</option>
                     </select>
                     </div>
-                  </div>
+                  
                 
                   <div class="layout-seat" style="margin-top: 15px;">
                     <img style="width: 100%;" src="theme/dist/img/coba-layout.png">

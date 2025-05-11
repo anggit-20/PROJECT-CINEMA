@@ -49,7 +49,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -170,9 +170,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
           
           <div class="container text-center">
   <div class="row">
-    <div class="col"><button type="button" class="btn btn-outline-secondary">
-      Date
-</button></div>
+    <div class="col"><button type="button" class="btn btn-outline-secondary"><?php echo date("Y-m-d"); ?></button></div>
 <div class="container text-center mt-3">
   <div class="row">
     <div class="col-12 mb-2">
@@ -188,7 +186,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
           
-            <button type="button" class="btn btn-block mt-3" style="background-color: #99090c;"><a href="form-reserv.php?id=<?= $film['id_film'] ?>">Buy Ticket</a></button>
+            <button type="button" class="btn btn-block mt-3" style="background-color: #99090c;"><a href="form-reserv.php?id=<?= $film['id_film'] ?>" style=" color: white;">Buy Ticket</a></button>
           
         <!-- /.row -->
         <!-- Main row -->
