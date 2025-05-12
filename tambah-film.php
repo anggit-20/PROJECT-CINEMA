@@ -21,6 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sinopsis = $_POST['sinopsis'];
         $studio = $_POST['studio'];
         $jam_tayang = $_POST['jam_tayang'];
+        
+        
+        // menggabungkan array jam_tayang jadi sebuah string
+        $jam_tayang = implode(",", $_POST['jam_tayang']);
+
 
         // Jika ada file gambar diupload
         if (isset($_FILES['thumbnail'])) {
@@ -33,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Query untuk menyimpan data film
-        $sql = "INSERT INTO film (judul, tahun, durasi, genre, usia, harga, sinopsis, studio, thumbnail) 
-                VALUES (:judul, :tahun, :durasi, :genre, :usia, :harga, :sinopsis, :studio, :thumbnail)";
-        
+        $sql = "INSERT INTO film (judul, tahun, durasi, genre, usia, harga, sinopsis, studio, thumbnail, jam_tayang) 
+                VALUES (:judul, :tahun, :durasi, :genre, :usia, :harga, :sinopsis, :studio, :thumbnail, :jam_tayang)";
+
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':judul', $judul);
         $stmt->bindParam(':tahun', $tahun);
@@ -46,20 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':sinopsis', $sinopsis);
         $stmt->bindParam(':studio', $studio);
         $stmt->bindParam(':thumbnail', $file_name);
-
-        //ambil id film yang baru saja ditambahkan
-        $film_id = $pdo->lastInsertId();
-
-        //simpan jam tayang
-        foreach($jam_tayang as $jam) {
-            $stmt_jam = $pdo->prepare("INSERT INTO showtime (film_id, jam) VALUES (:film_id, :jam)");
-            $stmt_jam->bindParam(':film_id', $film_id);
-            $stmt_jam->bindParam(':jam', $jam);
-            $stmt_jam->execute();
-        }
+        $stmt->bindParam(':jam_tayang', $jam_tayang);
 
         // Eksekusi query
         $stmt->execute();
+        
+        //ambil id film yang baru saja ditambahkan
+        $film_id = $pdo->lastInsertId();
 
         // Redirect ke halaman utama atau tampilkan pesan sukses
         header("Location: index-cineplex.php?message=Film berhasil ditambahkan");

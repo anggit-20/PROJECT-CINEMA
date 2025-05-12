@@ -152,7 +152,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
           </div>
             <div class="box-info row">
                 <div class="col-6"><?php echo $film['durasi']; ?>menit</div>
-                <div class="col-6"> studio <?php echo $film['studio']; ?></div>
+                <div class="col-6"><?php echo $film['studio']; ?></div>
             </div>
             <div>
               <div class="col-4"><?php echo $film['usia']; ?></div>
@@ -166,7 +166,10 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
           <p><?php echo $film['sinopsis']; ?></p>
           </div>
         
-        
+        <!-- memisahkan array jam_tayang dengan ',' -->
+        <?php
+        $jam_tayang = explode(",", $film['jam_tayang']);
+        ?>
           
           <div class="container text-center">
   <div class="row">
@@ -178,7 +181,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <?php foreach ($jam_tayang as $jam): ?>
       <div class="col-3">
-        <button class="btn btn-outline-light mb-2"><?php echo $jam['jam']; ?></button>
+        <button class="btn btn-outline-light mb-2"><?php echo $jam; ?></button>
       </div>
     <?php endforeach; ?>
   </div>

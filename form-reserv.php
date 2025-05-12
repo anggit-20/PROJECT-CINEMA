@@ -130,7 +130,7 @@ if (isset($_GET['id'])) {
                 <div class="card">
               <div class="card-header">
                 <h3 class="card-title" style="color: black;"><strong><?php echo $film['judul']; ?></strong></h3></br>
-                <h3 class="card-title" style="color: black;">Studio <?php echo $film['studio']; ?></h3>
+                <h3 class="card-title" style="color: black;"><?php echo $film['studio']; ?></h3>
               </div>
           
             </div>
@@ -150,7 +150,7 @@ if (isset($_GET['id'])) {
                   <div class="form-group row">
                     <label class="col-4 col-form-label" style="color: black;">Lokasi</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" disabled>
+                      <input type="text" class="form-control">
                     </div>
                   </div>
                   
@@ -158,8 +158,15 @@ if (isset($_GET['id'])) {
                   <div class="container text-center">
                   <!-- <div class="form-group row"> -->
                     <div class="col-8">
+                      <!-- memecah dari string ke array -->
+                    <?php
+                    $jam_tayang = explode(",", $film['jam_tayang']);
+                    ?>
                     <select class="form-select form-control" aria-label="Default select example">
                       <option selected>Pilih Jam Tayang</option>
+                      <?php foreach ($jam_tayang as $jam): ?>
+                      <option value="<?php echo $jam; ?>"><?php echo $jam; ?></option>
+                      <?php endforeach; ?>
                     </select>
                     </div>
                   

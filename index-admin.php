@@ -163,7 +163,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $film['harga']; ?></td>
                     <td><?php echo $film['sinopsis']; ?></td>
                     <td><?php echo $film['studio']; ?></td>
-                    <td><button type="button" class="btn btn-danger"><a href="./hapus-film.php?id=<?php echo $film['id_film'] ?>">Hapus</a></button>
+                    <td><a href="./hapus-film.php?id_film=<?php echo $film['id_film'] ?>" class="btn btn-danger">Hapus</a>
                     <button type="button" class="btn btn-warning">Edit</button></td>
                   </tr>
                   <?php endforeach; ?>
