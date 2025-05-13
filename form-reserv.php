@@ -153,7 +153,12 @@ if (isset($_GET['id'])) {
                       <input type="text" class="form-control">
                     </div>
                   </div>
-                  
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label" style="color: black;">Jumlah Tiket</label>
+                    <div class="col-8">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
                   
                   <div class="container text-center">
                   <!-- <div class="form-group row"> -->
@@ -162,36 +167,34 @@ if (isset($_GET['id'])) {
                     <?php
                     $jam_tayang = explode(",", $film['jam_tayang']);
                     ?>
-                    <select class="form-select form-control" aria-label="Default select example">
-                      <option selected>Pilih Jam Tayang</option>
+                    <select class="form-select form-control" name="jam_tayang" required>
+                      <option value="">Pilih Jam Tayang</option>
                       <?php foreach ($jam_tayang as $jam): ?>
                       <option value="<?php echo $jam; ?>"><?php echo $jam; ?></option>
                       <?php endforeach; ?>
                     </select>
                     </div>
-                  
                 
                   <div class="layout-seat" style="margin-top: 15px;">
                     <img style="width: 100%;" src="theme/dist/img/coba-layout.png">
                   </div>
 
                   <div class="form-group row mt-3">
-  <label class="col-4 col-form-label" style="color: white;">Masukkan Kursi</label>
-  <div class="col-4">
-    <input type="text" id="inputKursi" class="form-control" placeholder="Contoh:A1">
-  </div>
-  <div class="col-4">
-    <button type="button" class="btn btn-success" onclick="tambahKursi()">Tambah</button>
+  <label class="col-4 col-form-label" style="color: white;">Pilih Kursi</label>
+  <div class="col-8">
+    <?php
+    // Daftar kursi yang tersedia (bisa kamu sesuaikan jumlahnya)
+    $daftar_kursi = ['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','B1','B2','B3','B4','C1','C2','C3','C4'];
+    foreach ($daftar_kursi as $kursi) {
+      echo "<div class='form-check form-check-inline'>
+              <input class='form-check-input' type='checkbox' name='kursi[]' value='$kursi' id='$kursi'>
+              <label class='form-check-label text-white' for='$kursi'>$kursi</label>
+            </div>";
+    }
+    ?>
   </div>
 </div>
 
-<!-- Daftar kursi yang dipilih -->
-<div class="form-group row">
-  <label class="col-4 col-form-label" style="color: white;">Kursi Terpilih</label>
-  <div class="col-8">
-    <P id="daftarKursi" class="text-white"></P>
-  </div>
-</div>
 
 <input type="hidden" name="id_film" value="<?php echo $film['id_film']; ?>">
 
@@ -274,43 +277,6 @@ if (isset($_GET['id'])) {
 <script src="theme/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="theme/dist/js/pages/dashboard.js"></script>
-<script>
-  let kursiTerpilih = [];
-
-  function tambahKursi() {
-    const input = document.getElementById('inputKursi');
-    const value = input.value.trim().toUpperCase();
-    
-    if (value && !kursiTerpilih.includes(value)) {
-      kursiTerpilih.push(value);
-      updateDaftarKursi();
-      input.value = '';
-    }
-  }
-
-  function updateDaftarKursi() {
-    const daftar = document.getElementById('daftarKursi');
-    daftar.innerHTML = '';
-    
-    kursiTerpilih.forEach((kursi, index) => {
-      const li = document.createElement('li');
-      li.textContent = kursi + " ";
-      
-      const hapusBtn = document.createElement('button');
-      hapusBtn.textContent = 'Hapus';
-      hapusBtn.className = 'btn btn-secondary btn-sm ml-2';
-      hapusBtn.onclick = () => {
-        kursiTerpilih.splice(index, 1);
-        updateDaftarKursi();
-      };
-
-      li.appendChild(hapusBtn);
-      daftar.appendChild(li);
-    });
-
-    document.getElementById('kursiTerpilihInput').value = kursiTerpilih.join(',');
-  }
-</script>
 
 </body>
 </html>

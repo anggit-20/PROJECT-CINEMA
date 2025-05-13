@@ -1,32 +1,40 @@
 <?php
+include 'koneksi.php';
 
-    include 'koneksi.php';
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $id_film = $_POST['id_film'];
+    $jam_tayang = $_POST['jam_tayang'];
+    $kursi_terpilih = $_POST['kursi']; // array dari checkbox
 
-        $nama = $_POST['nama'];
-        $email = $_POST['email'];
-        $id_film = $_POST['id_film'];
-        $kursi_terpilih = $_POST['kursi_terpilih'];
+    $kursi_terpakai = [];
+    $kursi_tersimpan = [];
+
+    foreach ($kursi_terpilih as $kursi) {
+        $kursi = strtoupper(trim($kursi));
+
+        // Cek apakah kursi sudah dipesan
+        $stmt = $conn->prepare("SELECT * FROM pemesanan WHERE id_film = ? AND jam_tayang = ? AND kursi = ?");
+        $stmt->execute([$id_film, $jam_tayang, $kursi]);
+
+        if ($stmt->rowCount() > 0) {
+            $kursi_terpakai[] = $kursi;
+        } else {
+            // Simpan ke database
+            $stmt = $conn->prepare("INSERT INTO pemesanan (id_film, jam_tayang, nama, email, kursi) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$id_film, $jam_tayang, $nama, $email, $kursi]);
+            $kursi_tersimpan[] = $kursi;
+        }
     }
 
-    $sql = "SELECT kursi FROM pemesanan WHERE id_film = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([$id_film]);
-    $kursi_terisi = [];
-
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $kursi = explode(',', $row['kursi']);
-        $kursi_terisi = array_merge($kursi_terisi, $kursi);
+    // Tampilkan hasil
+    if (!empty($kursi_tersimpan)) {
+        echo "Berhasil memesan kursi: " . implode(", ", $kursi_tersimpan) . "<br>";
     }
 
-    // Simpan ke database
-    try {
-        $stmt = $conn->prepare("INSERT INTO pemesanan (nama, email, id_film, kursi) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nama, $email, $id_film, $kursi_terpilih]);
-
-        echo "Pemesanan berhasil!";
-    } catch (PDOException $e) {
-        echo "Gagal menyimpan data: " . $e->getMessage();
+    if (!empty($kursi_terpakai)) {
+        echo "Kursi yang sudah terisi: " . implode(", ", $kursi_terpakai);
     }
- 
+}
 ?>
