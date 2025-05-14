@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">Log Out</a>
         </div>
       </div>
 
@@ -148,15 +148,9 @@ if (isset($_GET['id'])) {
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-4 col-form-label" style="color: black;">Lokasi</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
                     <label class="col-4 col-form-label" style="color: black;">Jumlah Tiket</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" name="jumlah_tiket">
                     </div>
                   </div>
                   
@@ -178,20 +172,6 @@ if (isset($_GET['id'])) {
                   <div class="layout-seat" style="margin-top: 15px;">
                     <img style="width: 100%;" src="theme/dist/img/coba-layout.png">
                   </div>
-
-                  <div class="form-group row mt-3">
-  <label class="col-4 col-form-label" style="color: white;">Pilih Kursi</label>
-  <div class="col-8">
-    <?php
-    // Daftar kursi yang tersedia (bisa kamu sesuaikan jumlahnya)
-    $daftar_kursi = ['A1','A2','A3','A4','A5','A6','A7','A8','A9','A10','B1','B2','B3','B4','C1','C2','C3','C4'];
-    foreach ($daftar_kursi as $kursi) {
-      echo "<div class='form-check form-check-inline'>
-              <input class='form-check-input' type='checkbox' name='kursi[]' value='$kursi' id='$kursi'>
-              <label class='form-check-label text-white' for='$kursi'>$kursi</label>
-            </div>";
-    }
-    ?>
   </div>
 </div>
 
@@ -215,8 +195,28 @@ if (isset($_GET['id'])) {
                 </table>
                   </div>
 
+                  <div class="form-group text-center">
+  <label>Pilih Kursi</label><br>
+  <?php
+  $rows = range('A', 'J'); // A sampai J
+  $cols = range(1, 8);    // 1 sampai 10
+  foreach ($rows as $row) {
+      foreach ($cols as $col) {
+          $seat = $row . $col;
+          echo "<label><input type='checkbox' name='kursi[]' value='$seat'> $seat</label>";
+          if ($col == 4) {
+            echo "<span style='display: inline-block; width: 30px;'></span>";
+        }
+      }
+      echo "<br>";
+  }
+  ?>
+</div>
+
             <button type="submit" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Simpan</button>
             </form>
+
+            
             <!-- /.card -->
           </section>
           <!-- right col -->
