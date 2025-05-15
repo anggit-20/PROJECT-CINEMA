@@ -151,7 +151,7 @@ if (isset($_GET['id'])) {
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Judul</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="<?php echo $film['judul']; ?>">
                     </div>
                   </div>
                   <div class="form-group row">

@@ -42,7 +42,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="wrapper black">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <div class="preloader flex-column justify-content-center align-items-center" style = "color:>
     <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
@@ -73,7 +73,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="login-admin.php" class="d-block">Admin</a>
@@ -82,7 +82,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/logout.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Log Out</a>
@@ -91,10 +91,10 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">My Account</a>
+          <a href="index-user.php" class="d-block">My Account</a>
         </div>
       </div>
 

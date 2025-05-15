@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $stmt = $conn->prepare("INSERT INTO pemesanan (id_film, jam_tayang, nama, email, jumlah_tiket, kursi) VALUES (?, ?, ?, ?, ?, ?)");
                 $stmt->execute([$id_film, $jam_tayang, $nama, $email, $jumlah_tiket, $kursi]);
-                echo "Kursi $kursi berhasil dipesan.<br>";
+                
+                header('Location: detail-reserv.php')
             }
         }
     } else {

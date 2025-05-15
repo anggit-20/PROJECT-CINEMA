@@ -130,7 +130,8 @@ if (isset($_GET['id'])) {
                 <div class="card">
               <div class="card-header">
                 <h3 class="card-title" style="color: black;"><strong><?php echo $film['judul']; ?></strong></h3></br>
-                <h3 class="card-title" style="color: black;"><?php echo $film['studio']; ?></h3>
+                <h3 class="card-title" style="color: black;"><?php echo $film['studio']; ?></h3></br>
+                <h3 class="card-title" style="color: black;"><?php echo date("Y-m-d"); ?></h3>
               </div>
           
             </div>

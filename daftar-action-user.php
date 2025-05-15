@@ -1,15 +1,17 @@
 <?php
 include 'koneksi.php';
 
+$nama = $_POST['nama'];
 $email = $_POST['email'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$password = $_POST['password'];
 
-$sql = "INSERT INTO user (email, password) VALUES (:email, :password)";
+$sql = "INSERT INTO user (nama, email, password) VALUES (:nama, :email, :password)";
 $stmt = $conn->prepare($sql);
+$stmt->bindParam(':nama', $nama);
 $stmt->bindParam(':email', $email);
 $stmt->bindParam(':password', $password);
 
 $stmt->execute();
 
-header('Location:index-cineplex.php');
+header('Location: index-cineplex.php');
 ?>

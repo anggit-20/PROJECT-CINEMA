@@ -10,9 +10,9 @@ $stmt->bindParam(':email', $email);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($user && password_verify($password, $user['password'])) {
+if ($user) {
     session_start();
-    $_SESSION['id_user'] = $user['id'];
+    $_SESSION['id_user'] = $user['id_user'];
     $_SESSION['email'] = $user['email'];
 
     header("Location: index-user.php");
