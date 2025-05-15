@@ -47,7 +47,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark-primary navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -86,6 +86,15 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="info">
           <a href="#" class="d-block">Log Out</a>
+        </div>
+      </div>
+
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="theme/dist/img/" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">My Account</a>
         </div>
       </div>
 

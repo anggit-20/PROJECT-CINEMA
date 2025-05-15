@@ -24,7 +24,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to make your orders</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="login-action-user.php" method="post">
         <div class="input-group mb-3">
           <input type="email" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
