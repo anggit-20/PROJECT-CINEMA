@@ -89,10 +89,10 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Cinema</a>
+          <a href="index-cineplex.php" class="d-block">Dashboard</a>
         </div>
       </div>
 
@@ -206,17 +206,6 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td>1A,2A</td>
                     <td>100.000,00</td>
                     <td>DANA</td>
-                  </tr>
-                  <tr>
-                    <!-- <td>7/10/2007</td>
-                    <td>12.30</td>
-                    <td>Jumbo</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>Ukik</td>
-                    <td>2B,3B,4B</td>
-                    <td>150.000,00</td>
-                    <td>Transfer BCA</td> -->
                   </tr>
                   </tbody>
                   <tfoot>

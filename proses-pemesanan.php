@@ -8,12 +8,15 @@ if (!isset($_SESSION['id_user'])) {
     // Jika belum login, redirect ke login.php
     header("Location: login-user.php");
     exit;
-}
-
+} 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = $_POST['nama'];
-    $email = $_POST['email'];
+//     echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
+// exit;
+
+
     $jumlah_tiket = $_POST['jumlah_tiket'];
     $id_film = $_POST['id_film'];
     $jam_tayang = $_POST['jam_tayang'];
@@ -24,13 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("SELECT * FROM pemesanan WHERE id_film = ? AND jam_tayang = ? AND kursi = ?");
             $stmt->execute([$id_film, $jam_tayang, $kursi]);
 
-            if ($stmt->rowCount() > 0) {
+            if ($stmt->rowCount() > 0) { 
                 echo "Kursi $kursi sudah terisi!<br>";
             } else {
-                $stmt = $conn->prepare("INSERT INTO pemesanan (id_film, jam_tayang, nama, email, jumlah_tiket, kursi) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$id_film, $jam_tayang, $nama, $email, $jumlah_tiket, $kursi]);
+                $stmt = $conn->prepare("INSERT INTO pemesanan (id_film, jam_tayang, jumlah_tiket, kursi) VALUES (?, ?, ?, ?)");
+                $stmt->execute([$id_film, $jam_tayang, $jumlah_tiket, $kursi]);
+
+                $id_pemesanan = $conn->lastInsertId();
                 
-                header('Location: detail-reserv.php')
+                header("Location: detail-reserv.php?id=$id_pemesanan");
             }
         }
     } else {

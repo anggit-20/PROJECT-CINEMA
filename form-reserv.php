@@ -8,6 +8,10 @@ if (isset($_GET['id'])) {
   $film = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// $stmt = $conn->query("SELECT * FROM user WHERE id_user = ?");
+// $stmt->execute([$id_user]);
+// $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,19 +139,7 @@ if (isset($_GET['id'])) {
               </div>
           
             </div>
-
-                  <div class="form-group row">
-                    <label class="col-4 col-form-label" style="color: black;">Nama</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control" name="nama">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label class="col-4 col-form-label" style="color: black;">Email</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control" name="email">
-                    </div>
-                  </div>
+                  
                   <div class="form-group row">
                     <label class="col-4 col-form-label" style="color: black;">Jumlah Tiket</label>
                     <div class="col-8">
@@ -214,7 +206,7 @@ if (isset($_GET['id'])) {
   ?>
 </div>
 
-            <button type="submit" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Simpan</button>
+            <button type="submit" class="btn btn-block btn-secondary d-block">Simpan</button>
             </form>
 
             

@@ -10,7 +10,10 @@ if (!isset($_SESSION['id_user'])) {
     exit;
 }
 
-    $nama = $_SESSION['id_user'];
+    // ambil id_user dari session
+    $id_user = $_SESSION['id_user'];
+
+    //ambil data user dari database
     $stmt1 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
     $stmt1->execute([$id_user]);
     $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
@@ -88,7 +91,7 @@ if (!isset($_SESSION['id_user'])) {
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="index-cineplex.php" class="d-block">Dashboard</a>
@@ -97,7 +100,7 @@ if (!isset($_SESSION['id_user'])) {
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="logout.php" class="d-block">Log Out</a>
@@ -120,7 +123,7 @@ if (!isset($_SESSION['id_user'])) {
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
-            <h2 class="m-0"><strong>Hai, <?php echo $_SESSION['nama']; ?></strong></h2>
+            <h2 class="m-0"><strong>Hai, <?php echo $pemesanan['nama']; ?></strong></h2>
 
           </div><!-- /.col -->
 
@@ -155,14 +158,14 @@ if (!isset($_SESSION['id_user'])) {
                   <tbody>
                     <?php foreach ($films as $film):?>
                   <tr>
-                    <td><?php echo $film['judul']; ?></td>
-                    <td><?php echo $film['nama']; ?></td>
-                    <td><?php echo $film['tanggal']; ?></td>
-                    <td><?php echo $film['waktu']; ?></td>
-                    <td><?php echo $film['kursi']; ?></td>
-                    <td><?php echo $film['total']; ?></td>
-                    <td><?php echo $film['nomer']; ?></td>
-                    <td><?php echo $film['Bukti Pembayaran']; ?></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
