@@ -1,14 +1,25 @@
 <?php
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+include 'koneksi.php';
 
-    $query = mysqli_query($conn, "SELECT * FROM users WHERE email='$email'");
-    $data = mysqli_fetch_assoc($query);
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    if ($data && password_verify($password, $data['password'])) {
-    // Login berhasil
-    } else {
-    // Login gagal
-    }
+$query = "SELECT * FROM user WHERE email = :email";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':email', $email);
+$stmt->execute();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($user && password_verify($password, $user['password'])) {
+    session_start();
+    $_SESSION['id_user'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
+
+    header("Location: index-user.php");
+    exit;
+} else {
+    echo "Email atau password salah.";
+}
+
 
 ?>

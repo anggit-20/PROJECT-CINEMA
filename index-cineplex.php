@@ -116,13 +116,17 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
           </div><!-- /.col -->
   
+
           <div class="col-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's login to make orders</li>
             </ol>
           </div><!-- /.col -->
         
-          <button type="button" class="btn btn-block rounded-pill" style="width: 80px; margin: 10px; background-color: #99090c; color: white;">Login</button>
+          <div class="col-6 row">
+          <button type="button" class="btn btn-block rounded-pill" style="width: 70px; margin: 10px; background-color: #99090c; color: white;"><a href="login-user.php" style="text-decoration: none; color: white;">Masuk</a></button>
+          <button type="button" class="btn btn-block rounded-pill" style="width: 70px; margin: 10px; background-color: #99090c; color: white;"><a href="daftar-user.php" style="text-decoration: none; color: white;">Daftar</a></button>
+          </div>
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

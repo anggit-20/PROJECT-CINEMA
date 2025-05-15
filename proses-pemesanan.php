@@ -1,6 +1,16 @@
 <?php
 include 'koneksi.php';
 
+session_start();
+
+// Cek apakah user sudah login
+if (!isset($_SESSION['id_user'])) {
+    // Jika belum login, redirect ke login.php
+    header("Location: login-user.php");
+    exit;
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama'];
     $email = $_POST['email'];
