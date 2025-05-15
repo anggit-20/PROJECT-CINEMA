@@ -6,7 +6,7 @@
 
 // Ambil semua data sekaligus sebagai array
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
-   
+
 
 ?>
 
