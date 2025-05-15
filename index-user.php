@@ -10,13 +10,10 @@ if (!isset($_SESSION['id_user'])) {
     exit;
 }
 
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $stmt = $conn->prepare("SELECT * FROM user WHERE email = ?");
-  $stmt->execute([$id]);
-  $film = $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
+    $nama = $_SESSION['id_user'];
+    $stmt1 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+    $stmt1->execute([$id_user]);
+    $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -103,7 +100,7 @@ if (isset($_GET['id'])) {
           <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="" class="d-block">Log Out</a>
+          <a href="logout.php" class="d-block">Log Out</a>
         </div>
       </div>
 
@@ -123,7 +120,7 @@ if (isset($_GET['id'])) {
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
-            <h2 class="m-0"><strong>Hai, <?php echo $_SESSION['email']; ?></strong></h2>
+            <h2 class="m-0"><strong>Hai, <?php echo $_SESSION['nama']; ?></strong></h2>
 
           </div><!-- /.col -->
 

@@ -1,6 +1,7 @@
 <?php
 include 'koneksi.php';
 
+$nama = $_POST['nama'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -10,8 +11,9 @@ $stmt->bindParam(':email', $email);
 $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($user) {
+if ($user && $user['password'] == $password) {
     session_start();
+    $_SESSION['nama'] = $user['nama'];
     $_SESSION['id_user'] = $user['id_user'];
     $_SESSION['email'] = $user['email'];
 
