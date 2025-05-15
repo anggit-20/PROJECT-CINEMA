@@ -26,7 +26,7 @@
 
       <form action="daftar-action-user.php" method="POST">
         <div class="input-group mb-3">
-          <input type="email" name="nama" class="form-control" placeholder="Nama">
+          <input type="text" name="nama" class="form-control" placeholder="Nama">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
