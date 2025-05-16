@@ -53,9 +53,11 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
     </ul>
 
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -73,7 +75,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
           <a href="login-admin.php" class="d-block">Admin</a>
@@ -82,10 +84,19 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
           <a href="#" class="d-block">Log Out</a>
+        </div>
+      </div>
+
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="theme/dist/img/apps.png">
+        </div>
+        <div class="info">
+          <a href="index-user.php" class="d-block">My Account</a>
         </div>
       </div>
 
@@ -107,13 +118,17 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
           </div><!-- /.col -->
   
+
           <div class="col-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item active">Enjoy Your Movie <br> Let's login to make orders</li>
             </ol>
           </div><!-- /.col -->
         
-          <button type="button" class="btn btn-block rounded-pill" style="width: 80px; margin: 10px; background-color: #99090c; color: white;">Login</button>
+          <div class="col-6 row">
+          <button type="button" class="btn btn-block rounded-pill" style="width: 70px; margin: 10px; background-color: #99090c; color: white;"><a href="login-user.php" style="text-decoration: none; color: white;">Masuk</a></button>
+          <button type="button" class="btn btn-block rounded-pill" style="width: 70px; margin: 10px; background-color: #99090c; color: white;"><a href="daftar-user.php" style="text-decoration: none; color: white;">Daftar</a></button>
+          </div>
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -141,7 +156,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <div class="fs-2"><strong><?php echo $film['judul']; ?></strong></div>
             </div>
-            <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php?id=<?= $film['id_film'] ?>" class="d-block">More Info</a></button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php?id=<?= $film['id_film'] ?>" style="text-decoration: none; color: white;">More Info</a></button>
           </div>
           <?php endforeach; ?>
           

@@ -59,12 +59,6 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -155,7 +149,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-6"><?php echo $film['studio']; ?></div>
             </div>
             <div>
-              <div class="col-4"><?php echo $film['usia']; ?></div>
+              <div><?php echo $film['usia']; ?></div>
             </div>
             <div class="harga pt-3">
             <p><strong>Rp <?php echo $film['harga']; ?></strong></p>

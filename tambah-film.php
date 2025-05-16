@@ -21,10 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sinopsis = $_POST['sinopsis'];
         $studio = $_POST['studio'];
         $jam_tayang = $_POST['jam_tayang'];
-        
-        
-        // menggabungkan array jam_tayang jadi sebuah string
-        $jam_tayang = implode(",", $_POST['jam_tayang']);
 
 
         // Jika ada file gambar diupload
@@ -36,6 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $file_name = null;
         }
+
+        // menggabungkan array jam_tayang jadi sebuah string
+        $jam_tayang = implode(",", $_POST['jam_tayang']);
 
         // Query untuk menyimpan data film
         $sql = "INSERT INTO film (judul, tahun, durasi, genre, usia, harga, sinopsis, studio, thumbnail, jam_tayang) 

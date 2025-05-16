@@ -11,9 +11,17 @@ if (isset($_GET['id'])) {
     $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
 
     // Ambil data film berdasarkan id_film dari pemesanan
-    $stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
-    $stmt2->execute([$pemesanan['id_film']]);
-    $film = $stmt2->fetch(PDO::FETCH_ASSOC);
+    if($pemesanan) {
+      $stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
+      $stmt2->execute([$pemesanan['id_film']]);
+      $film = $stmt2->fetch(PDO::FETCH_ASSOC);
+    }
+
+    if($pemesanan) {
+      $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+      $stmt3->execute([$pemesanan['id_user']]);
+      $user = $stmt3->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>
 
@@ -95,18 +103,6 @@ if (isset($_GET['id'])) {
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <!-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -147,41 +143,42 @@ if (isset($_GET['id'])) {
             </h4>
             </div>
             <div class="card-body">
+            <?php if ($film && $pemesanan): ?>
                 <form class="form-horizontal" method="POST" action>
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Judul</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="<?php echo $film['judul']; ?>">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-4 col-form-label">Nama</label>
+                    <label class="col-4 col-form-label">Email</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" value="<?php echo $pemesanan['nama']; ?>">
+                      <input type="text" class="form-control" value="<?php echo $user['email']; ?>">
                     </div>
                   </div>
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label class="col-4 col-form-label">Lokasi</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" >
                     </div>
-                  </div>
+                  </div> -->
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Tanggal</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="<?php echo date("Y-m-d");?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Waktu</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="<?php echo $pemesanan['jam_tayang']; ?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Kursi</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" >
                     </div>
                   </div>
                   <div class="form-group row">
@@ -209,6 +206,9 @@ if (isset($_GET['id'])) {
                     </div>
                   </div>
                   </form>
+                  <?php else: ?>
+  <div class="alert alert-danger">Data pemesanan tidak ditemukan.</div>
+<?php endif; ?>
             </div>
         </div>
 

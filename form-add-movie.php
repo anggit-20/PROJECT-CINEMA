@@ -26,9 +26,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
   <style>
-    .wrapper {
-      color:#99090c;
-    }
+    
     </style>
 </head>
 <div class="wrapper">
@@ -44,12 +42,6 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -73,10 +65,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="theme/dist/img/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Cinema</a>
+          <a href="index-cineplex.php" class="d-block">Dashboard</a>
         </div>
       </div>
 

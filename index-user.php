@@ -1,26 +1,30 @@
 <?php
-// jika belum login redirect ke halaman login
-session_start();
-$email = $_SESSION['email'];
-if(!isset($email)) {
-  header('Location:login-admin.php');
-}
-
-?>
-
-<?php
 include 'koneksi.php';
 
-$stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
-$films = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
+session_start();
 
+// Cek apakah user sudah login
+if (!isset($_SESSION['id_user'])) {
+    // Jika belum login, redirect ke login.php
+    header("Location: login-user.php");
+    exit;
+}
+
+    // ambil id_user dari session
+    $id_user = $_SESSION['id_user'];
+
+    //ambil data user dari database
+    $stmt1 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+    $stmt1->execute([$id_user]);
+    $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1">
-  <title>Aneka Cinema | Admin</title>
+  <title>Aneka Cinema | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -79,7 +83,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="theme/dist/img/aneka-cinema.png" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light" >Aneka Cinema</span>
+      <span class="brand-text font-weight-light">Aneka Cinema</span>
     </a>
 
     <!-- Sidebar -->
@@ -91,6 +95,15 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div class="info">
           <a href="index-cineplex.php" class="d-block">Dashboard</a>
+        </div>
+      </div>
+
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="logout.php" class="d-block">Log Out</a>
         </div>
       </div>
 
@@ -110,13 +123,9 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"><strong>Aneka Cinema</strong></h1>
+            <h2 class="m-0"><strong>Hai, <?php echo $pemesanan['nama']; ?></strong></h2>
+
           </div><!-- /.col -->
-        
-          </div><!-- /.col -->
-          <!-- <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button> -->
-          <button type="button" class="btn btn-block btn-danger" style="border-radius: 20px;">
-  <a href="form-add-movie.php" style="color: white; text-decoration: none;">Add New Movie</a>
-</button>
 
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -130,39 +139,33 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <!-- tabel riwayat input data film-->
-        <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Riwayat Input Film</h3>
-              </div>
+
         <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>judul</th>
-                    <th>tahun</th>
-                    <th>durasi</th>
-                    <th>genre</th>
-                    <th>usia</th>
-                    <th>harga</th>
-                    <th>sinopsis</th>
-                    <th>studio</th>
-                    <th>Aksi</th>
+                    <th>Judul</th>
+                    <th>Nama</th>
+                    <th>Tanggal</th>
+                    <th>Waktu</th>
+                    <th>Kursi</th>
+                    <th>Total</th>
+                    <th>Nomer</th>
+                    <th>Bukti Pembayaran</th>
                   </tr>
                   </thead>
 
                   <tbody>
                     <?php foreach ($films as $film):?>
                   <tr>
-                    <td><?php echo $film['judul']; ?></td>
-                    <td><?php echo $film['tahun']; ?></td>
-                    <td><?php echo $film['durasi']; ?></td>
-                    <td><?php echo $film['genre']; ?></td>
-                    <td><?php echo $film['usia']; ?></td>
-                    <td><?php echo $film['harga']; ?></td>
-                    <td><?php echo $film['sinopsis']; ?></td>
-                    <td><?php echo $film['studio']; ?></td>
-                    <td><a href="./hapus-film.php?id_film=<?php echo $film['id_film'] ?>" class="btn btn-danger">Hapus</a>
-                    
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
@@ -170,26 +173,25 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   </tfoot>
                 </table>
               </div>
-              <!-- /.card-body -->
-            </div>
         
-        <div class="card">
+        
+        <!-- <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable Pembelian Ticket</h3>
+                <h3 class="card-title">Riwayat Pemesanan Anda</h3>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
+               card-header -->
+              <!-- <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Tanggal</th>
-                    <th>Pukul</th>
-                    <th>Judul Film</th>
-                    <th>Jumlah Ticket</th>
-                    <th>Studio</th>
+                    <th>Judul</th>
                     <th>Nama</th>
-                    <th>Nomor Kursi</th>
-                    <th>Total Pembayaran</th>
+                    <th>Tanggal</th>
+                    <th>Waktu</th>
+                    <th>Kursi</th>
+                    <th>Nama</th>
+                    <th>Total</th>
+                    <th>Nomer</th>
                     <th>Bukti Pembayaran</th>
                   </tr>
                   </thead>
@@ -204,6 +206,17 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td>1A,2A</td>
                     <td>100.000,00</td>
                     <td>DANA</td>
+                  </tr>
+                  <tr>  -->
+                    <!-- <td>7/10/2007</td>
+                    <td>12.30</td>
+                    <td>Jumbo</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>Ukik</td>
+                    <td>2B,3B,4B</td>
+                    <td>150.000,00</td>
+                    <td>Transfer BCA</td> -->
                   </tr>
                   </tbody>
                   <tfoot>
@@ -251,63 +264,9 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <!-- /.card -->
 
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">DataTable Pendapatan</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Tanggal</th>
-                    <th>Total Pembayaran</th>
-                    <th>Jumlah Akhir</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>Tanggal</th>
-                    <th>Total Pembayaran</th>
-                    <th>Jumlah Akhir</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
+            <!--  -->
 
-                 <!-- Donut chart -->
-                 <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="far fa-chart-bar"></i>
-                Data Pembelian Tiket
-                </h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div id="donut-chart" style="height: 300px;"></div>
-              </div>
-              <!-- /.card-body-->
-            </div>
+                
                   <!-- <div class="col-4 text-center">
                     <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
