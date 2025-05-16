@@ -15,8 +15,6 @@ $stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +164,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $film['studio']; ?></td>
                     <td><?php echo $film['jam_tayang']; ?></td>
                     <td><a href="./hapus-film.php?id_film=<?php echo $film['id_film'] ?>" class="btn btn-danger">Hapus</a>
-                    <button type="button" class="btn btn-warning">Edit</button></td>
+                    
                   </tr>
                   <?php endforeach; ?>
                   </tbody>

@@ -6,7 +6,7 @@
 
 // Ambil semua data sekaligus sebagai array
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
-   
+
 
 ?>
 
@@ -47,15 +47,17 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark-primary elevation-4">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
     </ul>
 
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -154,7 +156,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <div class="fs-2"><strong><?php echo $film['judul']; ?></strong></div>
             </div>
-            <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php?id=<?= $film['id_film'] ?>" class="d-block">More Info</a></button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php?id=<?= $film['id_film'] ?>" style="text-decoration: none; color: white;">More Info</a></button>
           </div>
           <?php endforeach; ?>
           
