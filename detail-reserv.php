@@ -4,6 +4,7 @@ include 'koneksi.php';
 
 if (isset($_GET['id'])) {
     $id_pemesanan = $_GET['id'];
+    $id_user = $_GET['id'];
 
     // Ambil data dari tabel pemesanan
     $stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
@@ -18,7 +19,7 @@ if (isset($_GET['id'])) {
     }
 
     if($pemesanan) {
-      $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+      $stmt3 = $conn->prepare("SELECT * FROM pemesanan WHERE id_user = ?");
       $stmt3->execute([$pemesanan['id_user']]);
       $user = $stmt3->fetch(PDO::FETCH_ASSOC);
     }
@@ -67,12 +68,6 @@ if (isset($_GET['id'])) {
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -178,13 +173,13 @@ if (isset($_GET['id'])) {
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Kursi</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" >
+                      <input type="text" class="form-control" value="<?php echo $pemesanan['kursi']; ?>">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Total</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="<?php echo $pemesanan['total']; ?>">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -197,12 +192,8 @@ if (isset($_GET['id'])) {
                     <label for="exampleInputFile">Bukti Pembayaran</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
+                      <input type="file" class="form-control" name="thumbnail">
+                      <label class="input-group-text">Upload</label>
                     </div>
                   </div>
                   </form>

@@ -148,6 +148,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>harga</th>
                     <th>sinopsis</th>
                     <th>studio</th>
+                    <th>jam tayang</th>
                     <th>Aksi</th>
                   </tr>
                   </thead>
@@ -163,6 +164,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $film['harga']; ?></td>
                     <td><?php echo $film['sinopsis']; ?></td>
                     <td><?php echo $film['studio']; ?></td>
+                    <td><?php echo $film['jam_tayang']; ?></td>
                     <td><a href="./hapus-film.php?id_film=<?php echo $film['id_film'] ?>" class="btn btn-danger">Hapus</a>
                     <button type="button" class="btn btn-warning">Edit</button></td>
                   </tr>

@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_FILES['thumbnail'])) {
             $file_name = $_FILES['thumbnail']['name'];
             $file_tmp = $_FILES['thumbnail']['tmp_name'];
-            $upload_dir = 'htdocs/PROJECT-CINEMA/theme/dist/thumbnail/';  // Tentukan folder untuk menyimpan file
+            $upload_dir = 'PROJECT-CINEMA/theme/dist/thumbnail/';  // Tentukan folder untuk menyimpan file
             move_uploaded_file($file_tmp, $upload_dir . $file_name);
         } else {
             $file_name = null;
