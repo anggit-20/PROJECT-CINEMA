@@ -13,6 +13,9 @@ include 'koneksi.php';
 
 $stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt2 = $conn->query("SELECT * FROM pemesanan ORDER BY id_pemesanan DESC");
+$pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -196,8 +199,9 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   </tr>
                   </thead>
                   <tbody>
+                  <?php foreach ($pembelian as $pemesanan):?>
                   <tr>
-                    <td>5/5/2025</td>
+                    <td><?php echo $pemesanan['judul']; ?></td>
                     <td>15.25</td>
                     <td>Pengepungan di Bukir Duri</td>
                     <td>2</td>

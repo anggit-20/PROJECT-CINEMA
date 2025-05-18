@@ -2,7 +2,7 @@
 
 session_start();
 session_destroy();
-header ('Location:login-user.php');
+header ('Location:index-cineplex.php');
 
 
 ?>

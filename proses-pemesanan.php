@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jumlah_tiket = $_POST['jumlah_tiket'];
     $id_film = $_POST['id_film'];
     $jam_tayang = $_POST['jam_tayang'];
+    $tanggal_pemesanan = date('Y-m-d');
+
 
     //ambil harga film untuk menghitung total
     $stmtHarga = $conn->prepare("SELECT harga FROM film WHERE id_film = ?");
@@ -29,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $harga = $film['harga'];
 
     //hitung total
-    $total = $harga * $jumlah_tiket
+    $total = $harga * $jumlah_tiket;
 
     // mengecek apakah kursi sudah dipesan apa belum
     if (isset($_POST['kursi']) && !empty($_POST['kursi'])) {
@@ -40,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->rowCount() > 0) { 
                 echo "Kursi $kursi sudah terisi!<br>";
             } else {
-                $stmt = $conn->prepare("INSERT INTO pemesanan (id_user, id_film, jam_tayang, jumlah_tiket, kursi, total) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$id_user, $id_film, $jam_tayang, $jumlah_tiket, $kursi, $total]);
+                $stmt = $conn->prepare("INSERT INTO pemesanan (id_user, id_film, jam_tayang, jumlah_tiket, kursi, total, tanggal_pemesanan) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$id_user, $id_film, $jam_tayang, $jumlah_tiket, $kursi, $total, $tanggal_pemesanan]);
 
                 $id_pemesanan = $conn->lastInsertId();
                 

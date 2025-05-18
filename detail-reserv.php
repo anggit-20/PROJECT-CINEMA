@@ -149,7 +149,7 @@ if (isset($_GET['id'])) {
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Email</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" value="<?php echo $user['email']; ?>">
+                      <input type="text" class="form-control" value="<?php echo $pemesanan['email']; ?>">
                     </div>
                   </div>
                   <!-- <div class="form-group row">
@@ -161,7 +161,7 @@ if (isset($_GET['id'])) {
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Tanggal</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" value="<?php echo date("Y-m-d");?>">
+                      <input type="text" class="form-control" value="<?= date('Y-m-d') ?>" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -183,9 +183,10 @@ if (isset($_GET['id'])) {
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label class="col-4 col-form-label">Nomor</label>
+                    <label class="col-4 col-form-label">Pembayaran</label>
                     <div class="col-8">
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="0987654321">
+                      <p>nomor tujuan pembayaran</p>
                     </div>
                   </div>
                   <div class="form-group">
@@ -212,7 +213,7 @@ if (isset($_GET['id'])) {
           </section>
           <!-- right col -->
 
-          <button type="button" class="btn btn-block btn-primary" style="width: 200px">Selesai</button>
+          <button type="button" class="btn btn-secondary" style="width: 200px;">Selesai</button>
 
         </div>
         <!-- /.row (main row) -->
