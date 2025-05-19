@@ -145,12 +145,10 @@ if (!isset($_SESSION['id_user'])) {
                   <thead>
                   <tr>
                     <th>Judul</th>
-                    <th>Nama</th>
                     <th>Tanggal</th>
                     <th>Waktu</th>
                     <th>Kursi</th>
                     <th>Total</th>
-                    <th>Nomer</th>
                     <th>Bukti Pembayaran</th>
                   </tr>
                   </thead>
@@ -158,8 +156,6 @@ if (!isset($_SESSION['id_user'])) {
                   <tbody>
                     <?php foreach ($films as $film):?>
                   <tr>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -282,14 +278,7 @@ if (!isset($_SESSION['id_user'])) {
             <!-- /.card -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
-
+  
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

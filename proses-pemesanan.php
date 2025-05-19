@@ -35,20 +35,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // mengecek apakah kursi sudah dipesan apa belum
     if (isset($_POST['kursi']) && !empty($_POST['kursi'])) {
+        $kursi_terpilih = implode(',', $_POST['kursi']);
+
         foreach ($_POST['kursi'] as $kursi) {
             $stmt = $conn->prepare("SELECT * FROM pemesanan WHERE id_film = ? AND jam_tayang = ? AND kursi = ?");
             $stmt->execute([$id_film, $jam_tayang, $kursi]);
 
             if ($stmt->rowCount() > 0) { 
                 echo "Kursi $kursi sudah terisi!<br>";
-            } else {
-                $stmt = $conn->prepare("INSERT INTO pemesanan (id_user, id_film, jam_tayang, jumlah_tiket, kursi, total, tanggal_pemesanan) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$id_user, $id_film, $jam_tayang, $jumlah_tiket, $kursi, $total, $tanggal_pemesanan]);
-
-                $id_pemesanan = $conn->lastInsertId();
+            } 
                 
-                header("Location: detail-reserv.php?id=$id_pemesanan");
-            }
+            $stmt = $conn->prepare("INSERT INTO pemesanan (id_user, id_film, jam_tayang, jumlah_tiket, kursi, total, tanggal_pemesanan) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$id_user, $id_film, $jam_tayang, $jumlah_tiket, $kursi_terpilih, $total, $tanggal_pemesanan]);
+
+            $id_pemesanan = $conn->lastInsertId();
+                
+            header("Location: detail-reserv.php?id=$id_pemesanan");
+            
         }
     } else {
         echo "Tidak ada kursi yang dipilih";

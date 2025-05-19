@@ -1,6 +1,7 @@
 <?php 
 
 include 'koneksi.php';
+session_start();
 
 if (isset($_GET['id'])) {
     $id_pemesanan = $_GET['id'];
@@ -18,11 +19,10 @@ if (isset($_GET['id'])) {
       $film = $stmt2->fetch(PDO::FETCH_ASSOC);
     }
 
-    if($pemesanan) {
-      $stmt3 = $conn->prepare("SELECT * FROM pemesanan WHERE id_user = ?");
-      $stmt3->execute([$pemesanan['id_user']]);
-      $user = $stmt3->fetch(PDO::FETCH_ASSOC);
-    }
+    $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+    $stmt3->execute([$pemesanan['id_user']]);
+    $user = $stmt3->fetch(PDO::FETCH_ASSOC);
+
 }
 ?>
 
@@ -139,7 +139,8 @@ if (isset($_GET['id'])) {
             </div>
             <div class="card-body">
             <?php if ($film && $pemesanan): ?>
-                <form class="form-horizontal" method="POST" action>
+                <form class="form-horizontal" method="POST" action="detail-reserv.php?id=<?= $id_pemesanan ?>" enctype="multipart/form-data">
+                <input type="hidden" name="id_pemesanan" value="<?= $pemesanan['id_pemesanan']; ?>">
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Judul</label>
                     <div class="col-8">
@@ -149,7 +150,7 @@ if (isset($_GET['id'])) {
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Email</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" value="<?php echo $pemesanan['email']; ?>">
+                      <input type="text" class="form-control" value="<?php echo $user['email']; ?>">
                     </div>
                   </div>
                   <!-- <div class="form-group row">
@@ -185,7 +186,7 @@ if (isset($_GET['id'])) {
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Pembayaran</label>
                     <div class="col-8">
-                      <input type="text" class="form-control" value="0987654321">
+                      <input type="text" class="form-control" value="0987654321" disabled>
                       <p>nomor tujuan pembayaran</p>
                     </div>
                   </div>

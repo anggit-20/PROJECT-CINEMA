@@ -100,7 +100,8 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          
+</ul>
+</nav>
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -202,15 +203,16 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                   <?php foreach ($pembelian as $pemesanan):?>
                   <tr>
                     <td><?php echo $pemesanan['judul']; ?></td>
-                    <td>15.25</td>
-                    <td>Pengepungan di Bukir Duri</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>Ahmad</td>
-                    <td>1A,2A</td>
-                    <td>100.000,00</td>
-                    <td>DANA</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
+                  <?php endforeach; ?>
                   </tbody>
                   <tfoot>
                   <!-- <tr>
