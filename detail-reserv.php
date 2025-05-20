@@ -1,31 +1,86 @@
 <?php 
+// if (isset($_GET['id'])) {
+//     $id_pemesanan = $_GET['id'];
+//     $id_user = $_GET['id'];
+
+//     // Ambil data dari tabel pemesanan
+//     $stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
+//     $stmt1->execute([$id_pemesanan]);
+//     $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+//     // Ambil data film berdasarkan id_film dari pemesanan
+//     if($pemesanan) {
+//       $stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
+//       $stmt2->execute([$pemesanan['id_film']]);
+//       $film = $stmt2->fetch(PDO::FETCH_ASSOC);
+//     }
+
+//     $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+//     $stmt3->execute([$pemesanan['id_user']]);
+//     $user = $stmt3->fetch(PDO::FETCH_ASSOC);
+
+// }
 
 include 'koneksi.php';
 session_start();
 
-if (isset($_GET['id'])) {
-    $id_pemesanan = $_GET['id'];
-    $id_user = $_GET['id'];
+if (!isset($_GET['id'])) {
+    header("Location: index-cineplex.php");
+    exit;
+}
 
-    // Ambil data dari tabel pemesanan
-    $stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
-    $stmt1->execute([$id_pemesanan]);
-    $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
+$id_pemesanan = $_GET['id'];
+$stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
+$stmt1->execute([$id_pemesanan]);
+$pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
 
-    // Ambil data film berdasarkan id_film dari pemesanan
-    if($pemesanan) {
-      $stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
-      $stmt2->execute([$pemesanan['id_film']]);
-      $film = $stmt2->fetch(PDO::FETCH_ASSOC);
+if (!$pemesanan) {
+    echo "Data pemesanan tidak ditemukan.";
+    exit;
+}
+
+$stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
+$stmt2->execute([$pemesanan['id_film']]);
+$film = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+$stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
+$stmt3->execute([$pemesanan['id_user']]);
+$user = $stmt3->fetch(PDO::FETCH_ASSOC);
+
+// waktu_pesan dari database (pastikan ada kolom ini)
+$waktu_pesan = isset($pemesanan['waktu_pesan']) ? strtotime($pemesanan['waktu_pesan']) : time();
+
+// Proses upload
+$kode_pemesanan = null;
+if (isset($_POST['upload_bukti'])) {
+    $sekarang = time();
+    if ($sekarang - $waktu_pesan <= 300) {
+        $namaFile = $_FILES['bukti']['name'];
+        $tmpName = $_FILES['bukti']['tmp_name'];
+        $target = "theme/dist/uploads/" . $namaFile;
+
+        move_uploaded_file($tmpName, $target);
+
+        $stmt = $conn->prepare("UPDATE pemesanan SET bukti_pembayaran = ? WHERE id_pemesanan = ?");
+        $stmt->execute([$namaFile, $id_pemesanan]);
+
+        $stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
+        $stmt1->execute([$id_pemesanan]);
+        $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+        $kode_pemesanan = strtoupper(substr(md5(rand()), 0, 8));
+        $_SESSION['kode_pemesanan'] = $kode_pemesanan;
+    } else {
+        header("Location: index-cineplex.php");
+        exit;
     }
+}
 
-    $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
-    $stmt3->execute([$pemesanan['id_user']]);
-    $user = $stmt3->fetch(PDO::FETCH_ASSOC);
-
+// Ambil dari session kalau sudah pernah upload
+if (isset($_SESSION['kode_pemesanan'])) {
+    $kode_pemesanan = $_SESSION['kode_pemesanan'];
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -121,7 +176,7 @@ if (isset($_GET['id'])) {
               
             </ol>
           </div><!-- /.col -->
-          <button type="button" class="btn btn-block btn-primary" style="width: 80px; margin: 10px;">Time</button>
+          <button type="button" class="btn btn-block btn-primary" id="timerButton" style="width: 80px; margin: 10px;">05:00</button>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -153,12 +208,6 @@ if (isset($_GET['id'])) {
                       <input type="text" class="form-control" value="<?php echo $user['email']; ?>">
                     </div>
                   </div>
-                  <!-- <div class="form-group row">
-                    <label class="col-4 col-form-label">Lokasi</label>
-                    <div class="col-8">
-                      <input type="text" class="form-control" >
-                    </div>
-                  </div> -->
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Tanggal</label>
                     <div class="col-8">
@@ -191,13 +240,28 @@ if (isset($_GET['id'])) {
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">Bukti Pembayaran</label>
+                    <label for="bukti">Upload Bukti Pembayaran</label>
                     <div class="input-group">
                       <div class="custom-file">
-                      <input type="file" class="form-control" name="thumbnail">
+                      <input type="file" class="form-control" id="bukti" name="bukti" required>
                       <label class="input-group-text">Upload</label>
                     </div>
                   </div>
+                  <button type="submit" name="upload_bukti" class="btn btn-secondary mt-2" style="width: 200px;">Kirim Bukti</button>
+                  <?php if (!empty($pemesanan['bukti_pembayaran'])): ?>
+                  <div>
+                    <p class="mb-0 mt-3"><strong>Kode Pemesanan Anda :</strong></p>
+                    <p class="mt-0" style="color: red;">Simpan kode anda untuk verifikasi offline</p>
+                    <?php if (isset($_SESSION['kode_pemesanan'])): ?>
+        <div class="alert alert-success"><?= $_SESSION['kode_pemesanan']; ?></div>
+        <?php unset($_SESSION['kode_pemesanan']); ?>
+    <?php else: ?>
+        <div class="alert alert-warning">Belum ada kode. Silakan upload bukti pembayaran.</div>
+    <?php endif; ?>
+                  </div>
+                  <?php endif; ?>
+
+                  <button type="submit" name="upload_bukti" class="btn btn-secondary" style="width: 200px;">Selesai</button>
                   </form>
                   <?php else: ?>
   <div class="alert alert-danger">Data pemesanan tidak ditemukan.</div>
@@ -214,8 +278,6 @@ if (isset($_GET['id'])) {
           </section>
           <!-- right col -->
 
-          <button type="button" class="btn btn-secondary" style="width: 200px;">Selesai</button>
-
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
@@ -223,13 +285,7 @@ if (isset($_GET['id'])) {
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer> -->
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -273,5 +329,34 @@ if (isset($_GET['id'])) {
 <script src="theme/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="theme/dist/js/pages/dashboard.js"></script>
+
+<script>
+let waktuPemesanan = <?= $waktu_pesan ?> * 1000;
+let batasWaktu = 5 * 60 * 1000; // 5 menit
+
+function countdown() {
+    let now = new Date().getTime();
+    let selisih = batasWaktu - (now - waktuPemesanan);
+
+    if (selisih <= 0) {
+        alert("Waktu habis!");
+        window.location.href = "index-cineplex.php";
+        return;
+    }
+
+    let menit = Math.floor(selisih / 60000);
+    let detik = Math.floor((selisih % 60000) / 1000);
+
+    menit = menit < 10 ? "0" + menit : menit;
+    detik = detik < 10 ? "0" + detik : detik;
+
+    document.getElementById("timerButton").innerText = menit + ":" + detik;
+
+    setTimeout(countdown, 1000);
+}
+
+window.onload = countdown;
+</script>
+
 </body>
 </html>
