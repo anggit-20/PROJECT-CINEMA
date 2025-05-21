@@ -18,6 +18,16 @@ if (!isset($_SESSION['id_user'])) {
     $stmt1->execute([$id_user]);
     $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
 
+    // Ambil data pemesanan user dari tabel pemesanan
+    $stmt2 = $conn->prepare("SELECT p.*, f.judul 
+    FROM pemesanan p 
+    JOIN film f ON p.id_film = f.id_film
+    WHERE p.id_user = ? 
+    ORDER BY p.id_pemesanan DESC");
+    $stmt2->execute([$id_user]);
+    $pemesanan_list = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,12 +73,7 @@ if (!isset($_SESSION['id_user'])) {
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <!-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li> -->
+      
     </ul>
 
     <!-- Right navbar links -->
@@ -140,7 +145,7 @@ if (!isset($_SESSION['id_user'])) {
 
         <!-- tabel riwayat input data film-->
 
-        <div class="card-body">
+            <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -149,19 +154,19 @@ if (!isset($_SESSION['id_user'])) {
                     <th>Waktu</th>
                     <th>Kursi</th>
                     <th>Total</th>
-                    <th>Bukti Pembayaran</th>
+                    
                   </tr>
                   </thead>
 
                   <tbody>
-                    <?php foreach ($films as $film):?>
+                  <?php foreach ($pemesanan_list as $p): ?>
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $p['judul']; ?></td>
+                    <td><?php echo $p['tanggal_pemesanan']; ?></td>
+                    <td><?php echo $p['jam_tayang']; ?></td>
+                    <td><?php echo $p['kursi']; ?></td>
+                    <td><?php echo $p['total']; ?></td>
+                    
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
@@ -170,65 +175,6 @@ if (!isset($_SESSION['id_user'])) {
                 </table>
               </div>
         
-        
-        <!-- <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Riwayat Pemesanan Anda</h3>
-              </div>
-               card-header -->
-              <!-- <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Judul</th>
-                    <th>Nama</th>
-                    <th>Tanggal</th>
-                    <th>Waktu</th>
-                    <th>Kursi</th>
-                    <th>Nama</th>
-                    <th>Total</th>
-                    <th>Nomer</th>
-                    <th>Bukti Pembayaran</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>5/5/2025</td>
-                    <td>15.25</td>
-                    <td>Pengepungan di Bukir Duri</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>Ahmad</td>
-                    <td>1A,2A</td>
-                    <td>100.000,00</td>
-                    <td>DANA</td>
-                  </tr>
-                  <tr>  -->
-                    <!-- <td>7/10/2007</td>
-                    <td>12.30</td>
-                    <td>Jumbo</td>
-                    <td>3</td>
-                    <td>1</td>
-                    <td>Ukik</td>
-                    <td>2B,3B,4B</td>
-                    <td>150.000,00</td>
-                    <td>Transfer BCA</td> -->
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <!-- <tr>
-                  <th>Tanggal</th>
-                    <th>Pukul</th>
-                    <th>Judul Film</th>
-                    <th>Studio</th>
-                    <th>Nama</th>
-                    <th>Nomor Kursi</th>
-                    <th>Total Pembayaran</th>
-                    <th>Bukti Pembayaran</th>
-                  </tr> -->
-                  </tfoot>
-                </table>
-              </div>
               <!-- /.card-body -->
             </div>
 

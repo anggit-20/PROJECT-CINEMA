@@ -20,6 +20,10 @@
 //     $user = $stmt3->fetch(PDO::FETCH_ASSOC);
 
 // }
+if (isset($_POST['selesai'])) {
+  header("Location: index-user.php"); // arahkan ke dashboard user
+  exit;
+}
 
 include 'koneksi.php';
 session_start();
@@ -261,7 +265,7 @@ if (isset($_SESSION['kode_pemesanan'])) {
                   </div>
                   <?php endif; ?>
 
-                  <button type="submit" name="upload_bukti" class="btn btn-secondary" style="width: 200px;">Selesai</button>
+                  <button type="submit" name="selesai" class="btn btn-secondary" style="width: 200px;">Selesai</button>
                   </form>
                   <?php else: ?>
   <div class="alert alert-danger">Data pemesanan tidak ditemukan.</div>

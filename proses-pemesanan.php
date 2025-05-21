@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //ambil harga film untuk menghitung total
     $stmtHarga = $conn->prepare("SELECT harga FROM film WHERE id_film = ?");
-    $stmtHarga->execute([$pemesanan['id_film']]);
+    $stmtHarga->execute([$film['id_film']]);
     $film = $stmtHarga->fetch(PDO::FETCH_ASSOC);
     $harga = $film['harga'];
 

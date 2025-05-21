@@ -149,7 +149,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
             <div class="small-box" style="background-color: #99090c;">
               <div class="inner">
-              <img style="width: 150px; height: 200px;" src="theme/dist/thumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
+              <img style="width: 150px; height: 200px;" src="/theme/dist/thumbnail/<?php echo $film['thumbnail']; ?>" alt="<?php echo $film['judul']; ?>">
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -169,14 +169,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer> -->
-
+  
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
