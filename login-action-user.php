@@ -20,7 +20,7 @@ if ($user && $user['password'] == $password) {
     header("Location: index-user.php");
     exit;
 } else {
-    echo "Email atau password salah.";
+    header("Location: daftar-user.php");
 }
 
 

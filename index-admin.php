@@ -14,7 +14,11 @@ include 'koneksi.php';
 $stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt2 = $conn->query("SELECT * FROM pemesanan ORDER BY id_pemesanan DESC");
+$stmt2 = $conn->query("SELECT pemesanan.*, film.judul, film.studio 
+                       FROM pemesanan 
+                       JOIN film ON pemesanan.id_film = film.id_film 
+                       ORDER BY id_pemesanan DESC");
+
 $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -196,29 +200,30 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                   <tbody>
                   <?php foreach ($pembelian as $pemesanan):?>
                   <tr>
+                    <td><?php echo $pemesanan['tanggal_pemesanan']; ?></td>
+                    <td><?php echo $pemesanan['jam_tayang']; ?></td>
                     <td><?php echo $pemesanan['judul']; ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $pemesanan['jumlah_tiket']; ?></td>
+                    <td><?php echo $pemesanan['studio']; ?></td>
+                    <td><?php echo $pemesanan['email']; ?></td>
+                    <td><?php echo $pemesanan['kursi']; ?></td>
+                    <td><?php echo $pemesanan['total']; ?></td>
                     <td></td>
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
                   <tfoot>
-                  <!-- <tr>
-                  <th>Tanggal</th>
+                  <tr>
+                    <th>Tanggal</th>
                     <th>Pukul</th>
                     <th>Judul Film</th>
+                    <th>Jumlah Ticket</th>
                     <th>Studio</th>
-                    <th>Nama</th>
+                    <th>Email</th>
                     <th>Nomor Kursi</th>
                     <th>Total Pembayaran</th>
                     <th>Bukti Pembayaran</th>
-                  </tr> -->
+                  </tr>
                   </tfoot>
                 </table>
               </div>

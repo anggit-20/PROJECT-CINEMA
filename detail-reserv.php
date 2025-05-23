@@ -1,25 +1,5 @@
 <?php 
-// if (isset($_GET['id'])) {
-//     $id_pemesanan = $_GET['id'];
-//     $id_user = $_GET['id'];
 
-//     // Ambil data dari tabel pemesanan
-//     $stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
-//     $stmt1->execute([$id_pemesanan]);
-//     $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
-
-//     // Ambil data film berdasarkan id_film dari pemesanan
-//     if($pemesanan) {
-//       $stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
-//       $stmt2->execute([$pemesanan['id_film']]);
-//       $film = $stmt2->fetch(PDO::FETCH_ASSOC);
-//     }
-
-//     $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
-//     $stmt3->execute([$pemesanan['id_user']]);
-//     $user = $stmt3->fetch(PDO::FETCH_ASSOC);
-
-// }
 if (isset($_POST['selesai'])) {
   header("Location: index-user.php"); // arahkan ke dashboard user
   exit;
@@ -65,15 +45,19 @@ if (isset($_POST['upload_bukti'])) {
 
         move_uploaded_file($tmpName, $target);
 
-        $stmt = $conn->prepare("UPDATE pemesanan SET bukti_pembayaran = ? WHERE id_pemesanan = ?");
-        $stmt->execute([$namaFile, $id_pemesanan]);
+        $kode_pemesanan = strtoupper(substr(md5(rand()), 0, 8));
+        $_SESSION['kode_pemesanan'] = $kode_pemesanan;
+
+        $stmt = $conn->prepare("UPDATE pemesanan SET bukti_pembayaran = ?, kode_pemesanan = ? WHERE id_pemesanan = ?");
+        $stmt->execute([$namaFile, $kode_pemesanan, $id_pemesanan]);
+
 
         $stmt1 = $conn->prepare("SELECT * FROM pemesanan WHERE id_pemesanan = ?");
         $stmt1->execute([$id_pemesanan]);
         $pemesanan = $stmt1->fetch(PDO::FETCH_ASSOC);
 
-        $kode_pemesanan = strtoupper(substr(md5(rand()), 0, 8));
-        $_SESSION['kode_pemesanan'] = $kode_pemesanan;
+        header("Location: tiket-saya.php?id_pemesanan=" . $id_pemesanan);
+        exit;
     } else {
         header("Location: index-cineplex.php");
         exit;
@@ -243,33 +227,20 @@ if (isset($_SESSION['kode_pemesanan'])) {
                       <p>nomor tujuan pembayaran</p>
                     </div>
                   </div>
+                 
                   <div class="form-group">
                     <label for="bukti">Upload Bukti Pembayaran</label>
                     <div class="input-group">
                       <div class="custom-file">
                       <input type="file" class="form-control" id="bukti" name="bukti" required>
-                      <label class="input-group-text">Upload</label>
+                      <!-- <label class="input-group-text">Upload</label> -->
                     </div>
                   </div>
                   <button type="submit" name="upload_bukti" class="btn btn-secondary mt-2" style="width: 200px;">Kirim Bukti</button>
-                  <?php if (!empty($pemesanan['bukti_pembayaran'])): ?>
-                  <div>
-                    <p class="mb-0 mt-3"><strong>Kode Pemesanan Anda :</strong></p>
-                    <p class="mt-0" style="color: red;">Simpan kode anda untuk verifikasi offline</p>
-                    <?php if (isset($_SESSION['kode_pemesanan'])): ?>
-        <div class="alert alert-success"><?= $_SESSION['kode_pemesanan']; ?></div>
-        <?php unset($_SESSION['kode_pemesanan']); ?>
-    <?php else: ?>
-        <div class="alert alert-warning">Belum ada kode. Silakan upload bukti pembayaran.</div>
-    <?php endif; ?>
-                  </div>
-                  <?php endif; ?>
-
-                  <button type="submit" name="selesai" class="btn btn-secondary" style="width: 200px;">Selesai</button>
                   </form>
                   <?php else: ?>
-  <div class="alert alert-danger">Data pemesanan tidak ditemukan.</div>
-<?php endif; ?>
+                  <div class="alert alert-danger">Data pemesanan tidak ditemukan.</div>
+            <?php endif; ?>
             </div>
         </div>
 
