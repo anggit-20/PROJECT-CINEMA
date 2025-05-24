@@ -26,15 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //ambil harga film untuk menghitung total
     $stmtHarga = $conn->prepare("SELECT harga FROM film WHERE id_film = ?");
-    $stmtHarga->execute([$film['id_film']]);
+    $stmtHarga->execute([$id_film]);
     $film = $stmtHarga->fetch(PDO::FETCH_ASSOC);
     $harga = $film['harga'];
+
+//     echo "Harga: $harga <br>";
+// echo "Jumlah Tiket: $jumlah_tiket <br>";
+// echo "Total: " . ($harga * $jumlah_tiket) . "<br>";
+// exit;
+
 
     //hitung total
     $total = $harga * $jumlah_tiket;
 
     // mengecek apakah kursi sudah dipesan apa belum
     if (isset($_POST['kursi']) && !empty($_POST['kursi'])) {
+
+        //menggabungkan array kursi terpilih jadi string
         $kursi_terpilih = implode(',', $_POST['kursi']);
 
         foreach ($_POST['kursi'] as $kursi) {
