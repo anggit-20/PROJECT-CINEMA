@@ -182,7 +182,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                       <input type="file" class="form-control" name="thumbnail">
-                      <label class="input-group-text">Upload</label>
+                      
                     </div>
                   </div>
                   

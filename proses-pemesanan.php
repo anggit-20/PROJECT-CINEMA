@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     //hitung total
-    $total = $harga * $jumlah_tiket;
+    $total = $harga * $jumlah_tiket * 1000;
 
     // mengecek apakah kursi sudah dipesan apa belum
     if (isset($_POST['kursi']) && !empty($_POST['kursi'])) {
@@ -53,17 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Kursi $kursi sudah terisi!<br>";
             } 
                 
-            $stmt = $conn->prepare("INSERT INTO pemesanan (id_user, id_film, jam_tayang, jumlah_tiket, kursi, total, tanggal_pemesanan) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$id_user, $id_film, $jam_tayang, $jumlah_tiket, $kursi_terpilih, $total, $tanggal_pemesanan]);
-
-            $id_pemesanan = $conn->lastInsertId();
-                
-            header("Location: detail-reserv.php?id=$id_pemesanan");
-            
+           
         }
     } else {
         echo "Tidak ada kursi yang dipilih";
     }
+
+    $stmt = $conn->prepare("INSERT INTO pemesanan (id_user, id_film, jam_tayang, jumlah_tiket, kursi, total, tanggal_pemesanan) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$id_user, $id_film, $jam_tayang, $jumlah_tiket, $kursi_terpilih, $total, $tanggal_pemesanan]);
+
+    $id_pemesanan = $conn->lastInsertId();
+        
+    header("Location: detail-reserv.php?id=$id_pemesanan");
+    exit;
     
 }
 ?>

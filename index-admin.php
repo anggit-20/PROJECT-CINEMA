@@ -20,6 +20,10 @@ $stmt2 = $conn->query("SELECT pemesanan.*, film.judul, film.studio
                        ORDER BY id_pemesanan DESC");
 
 $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt3 = $conn->query("SELECT SUM(total) as total_pendapatan, MAX(tanggal_pemesanan) as tanggal_terakhir FROM pemesanan");
+$data_pendapatan = $stmt3->fetch(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +53,8 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="theme/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="theme/plugins/summernote/summernote-bs4.min.css">
+  <!-- data table -->
+  <link rel="stylesheet" href="theme/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     
     </style>
 </head>
@@ -183,7 +189,7 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="tabelPembelian" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Tanggal</th>
@@ -195,6 +201,7 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                     <th>Nomor Kursi</th>
                     <th>Total Pembayaran</th>
                     <th>Bukti Pembayaran</th>
+                    <th>Kode Pemesanan</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -208,7 +215,8 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $pemesanan['email']; ?></td>
                     <td><?php echo $pemesanan['kursi']; ?></td>
                     <td><?php echo $pemesanan['total']; ?></td>
-                    <td></td>
+                    <td><?php echo $pemesanan['bukti_pembayaran']; ?></td>
+                    <td><?php echo $pemesanan['kode_pemesanan']; ?></td>
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
@@ -223,6 +231,7 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                     <th>Nomor Kursi</th>
                     <th>Total Pembayaran</th>
                     <th>Bukti Pembayaran</th>
+                    <th>Kode Pemesanan</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -264,28 +273,27 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Tanggal</th>
-                    <th>Total Pembayaran</th>
-                    <th>Jumlah Akhir</th>
+                    <th>Total Pendapatan</th>
+                    
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
+                    <td><?php echo $data_pendapatan['tanggal_terakhir']; ?></td>
+                    <td><?php echo 'Rp ' . number_format($data_pendapatan['total_pendapatan'], 0, ',', '.'); ?></td>
+                    
                   </tr>
                   </tbody>
                   <tfoot>
                   <tr>
                   <th>Tanggal</th>
                     <th>Total Pembayaran</th>
-                    <th>Jumlah Akhir</th>
+                    
                   </tr>
                   </tfoot>
                 </table>
@@ -382,6 +390,7 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 <script src="theme/dist/js/pages/dashboard.js"></script>
 <script src="theme/plugins/flot/jquery.flot.js"></script>
 <script src="theme/plugins/flot/plugins/jquery.flot.pie.js"></script>
+<script src="theme/plugins/datatables/jquery.dataTables.min.js"></script>
 
 <script>
   $(function () {
@@ -427,5 +436,21 @@ $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     }
   });
 </script>
+
+<script>
+  $(function () {
+    $("#tabelPembelian").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "searching": true,
+      "ordering": true,
+      "paging": true,
+      "info": true,
+      
+    }).buttons().container().appendTo('#tabelPembelian_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
 </body>
 </html>
