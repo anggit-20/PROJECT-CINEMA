@@ -177,6 +177,7 @@
 <input type="checkbox" name="jam_tayang[]" value="14:05"> 14:05<br>
 <input type="checkbox" name="jam_tayang[]" value="17:15"> 17:15<br>
 <input type="checkbox" name="jam_tayang[]" value="19:45"> 19:45<br>
+
                   <div class="form-group">
                     <label for="exampleInputFile">Thumbnail (Poster)</label>
                     <div class="input-group">

@@ -7,10 +7,12 @@ if (isset($_GET['id'])) {
   $stmt->execute([$id]);
   $film = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  // Ambil semua jam tayang berdasarkan id film
-$stmt_jam = $conn->prepare("SELECT * FROM showtime WHERE film_id = ?");
-$stmt_jam->execute([$id]);
-$jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
+  $jam_tayang = explode(",", $film['jam_tayang']);
+
+//   // Ambil semua jam tayang berdasarkan id film
+// $stmt_jam = $conn->prepare("SELECT jam_tayang FROM film WHERE id_film = ?");
+// $stmt_jam->execute([$id]);
+// $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
 
 }
 
@@ -159,11 +161,6 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
           <div class="sinopsis p-3">
           <p><?php echo $film['sinopsis']; ?></p>
           </div>
-        
-        <!-- memisahkan array jam_tayang dengan ',' -->
-        <?php
-        $jam_tayang = explode(",", $film['jam_tayang']);
-        ?>
           
           <div class="container text-center">
   <div class="row">
@@ -221,14 +218,7 @@ $jam_tayang = $stmt_jam->fetchAll(PDO::FETCH_ASSOC);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer> -->
-
+  
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

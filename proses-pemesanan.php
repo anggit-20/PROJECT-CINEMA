@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Kursi $kursi sudah terisi!<br>";
             } 
                 
-           
         }
     } else {
         echo "Tidak ada kursi yang dipilih";

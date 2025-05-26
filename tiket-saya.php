@@ -155,6 +155,12 @@ $kode_pemesanan = $pemesanan['kode_pemesanan'] ?? "Belum tersedia";
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Waktu</label>
                     <div class="col-8">
+                      <input type="text" class="form-control" value="<?php echo $film['studio']; ?>">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Waktu</label>
+                    <div class="col-8">
                       <input type="text" class="form-control" value="<?php echo $pemesanan['jam_tayang']; ?>">
                     </div>
                   </div>
