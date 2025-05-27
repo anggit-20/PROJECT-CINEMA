@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $file_name = $_FILES['thumbnail']['name'];
             $tmp = $_FILES['thumbnail']['tmp_name'];
             $folder = "theme/dist/thumbnail/" . $file_name;  // Tentukan folder untuk menyimpan file
-            move_uploaded_file($tmp, $folder . $file_name);
+            move_uploaded_file($tmp, $folder);
         } else {
             $file_name = null;
         }

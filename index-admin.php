@@ -21,8 +21,14 @@ $stmt2 = $conn->query("SELECT pemesanan.*, film.judul, film.studio
 
 $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt3 = $conn->query("SELECT SUM(total) as total_pendapatan, MAX(tanggal_pemesanan) as tanggal_terakhir FROM pemesanan");
-$data_pendapatan = $stmt3->fetch(PDO::FETCH_ASSOC);
+$stmt3 = $conn->query("SELECT DATE(tanggal_pemesanan) AS tanggal, 
+SUM(total) AS total_pendapatan 
+FROM pemesanan 
+WHERE bukti_pembayaran IS NOT NULL 
+GROUP BY DATE(tanggal_pemesanan)
+ORDER BY tanggal DESC
+");
+$data_pendapatan = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -279,16 +285,18 @@ $data_pendapatan = $stmt3->fetch(PDO::FETCH_ASSOC);
                   <tr>
                     <th>Tanggal</th>
                     <th>Total Pendapatan</th>
-                    
                   </tr>
                   </thead>
+
                   <tbody>
+                    <?php foreach ($data_pendapatan as $row): ?>
                   <tr>
-                    <td><?php echo $data_pendapatan['tanggal_terakhir']; ?></td>
-                    <td><?php echo 'Rp ' . number_format($data_pendapatan['total_pendapatan'], 0, ',', '.'); ?></td>
-                    
+                    <td><?php echo $row['tanggal']; ?></td>
+                    <td><?php echo 'Rp ' . number_format($row['total_pendapatan'], 0, ',', '.'); ?></td>
                   </tr>
+                    <?php endforeach; ?>
                   </tbody>
+
                   <tfoot>
                   <tr>
                   <th>Tanggal</th>

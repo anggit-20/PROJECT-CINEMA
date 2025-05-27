@@ -31,7 +31,7 @@ $stmt3 = $conn->prepare("SELECT * FROM user WHERE id_user = ?");
 $stmt3->execute([$pemesanan['id_user']]);
 $user = $stmt3->fetch(PDO::FETCH_ASSOC);
 
-// waktu_pesan dari database (pastikan ada kolom ini)
+// waktu_pesan dari database
 $waktu_pesan = isset($pemesanan['waktu_pesan']) ? strtotime($pemesanan['waktu_pesan']) : time();
 
 // Proses upload
@@ -134,7 +134,7 @@ if (isset($_SESSION['kode_pemesanan'])) {
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
           <a href="#" class="d-block">Log Out</a>
