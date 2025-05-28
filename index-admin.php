@@ -32,6 +32,15 @@ $data_pendapatan = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
+<?php
+$stmt4 = $conn->prepare("SELECT film.judul, SUM(pemesanan.jumlah_tiket) as total_tiket
+                        FROM pemesanan JOIN film ON pemesanan.id_film = film.id_film
+                        GROUP BY film.judul");
+$stmt4->execute();
+$donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,7 +158,7 @@ $data_pendapatan = $stmt3->fetchAll(PDO::FETCH_ASSOC);
                 <h3 class="card-title">Riwayat Input Film</h3>
               </div>
         <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="tabelRiwayat" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>judul</th>
@@ -280,7 +289,7 @@ $data_pendapatan = $stmt3->fetchAll(PDO::FETCH_ASSOC);
               <!-- /.card-header -->
               <div class="card-body">
               
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="tabelPendapatan" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Tanggal</th>
@@ -406,20 +415,16 @@ $data_pendapatan = $stmt3->fetchAll(PDO::FETCH_ASSOC);
      * DONUT CHART
      * -----------
      */
-    var donutData = [
-      {
-        label: 'Pengepungan di Bukit Duri',
-        data: 75,
-        color: '#3c8dbc'
-      },
-      {
-        label: 'Jumbo',
-        data: 25,
-        color: '#0073b7'
-      },
+    var donut_data = [
+      <?php
+        foreach ($donut_data as $data) {
+          echo "{ label: '".addslashes($data['judul'])."', data: ".$data['total_tiket'].", },";
+        }
+        
+        ?>
     ];
 
-    $.plot('#donut-chart', donutData, {
+    $.plot('#donut-chart', donut_data, {
       series: {
         pie: {
           show: true,

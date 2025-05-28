@@ -8,10 +8,20 @@ if (isset($_GET['id'])) {
   $film = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// $stmt = $conn->query("SELECT * FROM user WHERE id_user = ?");
-// $stmt->execute([$id_user]);
-// $user = $stmt->fetch(PDO::FETCH_ASSOC);
+// mengambil nilai kursi yang sudah terisi dari pemesanan
+$stmt = $conn->prepare("SELECT kursi FROM pemesanan WHERE id_film = ?");
+$stmt->execute([$id]);
+$result = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+// gabungkan semua kursi jadi satu array
+$kursi_terisi = []; //agar berupa array
+
+foreach ($result as $data_kursi) {
+  $kursi_array = explode(",", $data_kursi);
+  foreach ($kursi_array as $k) {
+    $kursi_terisi[] = trim($k);
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +55,7 @@ if (isset($_GET['id'])) {
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -162,9 +172,9 @@ if (isset($_GET['id'])) {
                     </select>
                     </div>
                 
-                  <div class="layout-seat" style="margin-top: 15px;">
+                  <!-- <div class="layout-seat" style="margin-top: 15px;">
                     <img style="width: 100%;" src="theme/dist/img/coba-layout.png">
-                  </div>
+                  </div> -->
   </div>
 </div>
 
@@ -180,10 +190,12 @@ if (isset($_GET['id'])) {
                     </tr>
                   </thead>
                   <tbody>
+                    <?php foreach ($kursi_terisi as $kursi): ?>
                   <tr>
-                      <td>Task</td>
-                      <td>Progress</td>
+                      <td><?php echo $kursi?></td>
+                      <td>Terisi</td>
                     </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
                   </div>

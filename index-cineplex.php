@@ -43,7 +43,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" height="60" width="60">
   </div>
 
   <!-- Navbar -->
