@@ -47,7 +47,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -87,7 +87,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Log Out</a>
+          <a href="logout.php" class="d-block">Log Out</a>
         </div>
       </div>
 
@@ -154,7 +154,9 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <div class="fs-2"><strong><?php echo $film['judul']; ?></strong></div>
             </div>
+            <div class="text-center mb-3">
             <button type="button" class="btn btn-outline-secondary rounded-pill"><a href="desk_film.php?id=<?= $film['id_film'] ?>" style="text-decoration: none; color: white;">More Info</a></button>
+            </div>
           </div>
           <?php endforeach; ?>
           

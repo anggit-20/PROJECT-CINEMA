@@ -34,8 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // menggabungkan array jam_tayang jadi sebuah string
-        $jam_tayang = implode(",", $_POST['jam_tayang']);
-        // $jam_tayang = implode(",", $jam_tayang_array);
+        $jam_tayang = implode(",", $jam_tayang_array);
 
         // Query untuk menyimpan data film
         $sql = "INSERT INTO film (judul, tahun, durasi, genre, usia, harga, sinopsis, studio, thumbnail, jam_tayang) 
@@ -60,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $film_id = $pdo->lastInsertId();
 
         // Redirect ke halaman utama atau tampilkan pesan sukses
-        header("Location: index-cineplex.php?message=Film berhasil ditambahkan");
+        header("Location: index-admin.php?message=Film berhasil ditambahkan");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

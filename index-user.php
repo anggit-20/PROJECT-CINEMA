@@ -59,7 +59,7 @@ if (!isset($_SESSION['id_user'])) {
     
     </style>
 </head>
-<div class="wrapper">
+<div class="wrapper black">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
@@ -121,7 +121,7 @@ if (!isset($_SESSION['id_user'])) {
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -143,10 +143,15 @@ if (!isset($_SESSION['id_user'])) {
           <!-- ./col -->
         </div>
 
+        <div class="card mt-3" style="background-color: #99090c;">
+        <div class="card-header">
+            <h4 class="card-title">
+               Riwayat Pembelian Anda
+            </h4>
+            </div>
         <!-- tabel riwayat input data film-->
-
             <div class="card-body">
-              <p><strong>Riwayat Pembelian Anda</strong></p>
+              <div class="table-responsive">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -174,11 +179,12 @@ if (!isset($_SESSION['id_user'])) {
                   
                   </tfoot>
                 </table>
+                </div>
               </div>
         
               <!-- /.card-body -->
             </div>
-
+            </div>
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
