@@ -17,6 +17,7 @@ $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt2 = $conn->query("SELECT pemesanan.*, film.judul, film.studio 
                        FROM pemesanan 
                        JOIN film ON pemesanan.id_film = film.id_film 
+                       JOIN user ON pemesanan.id_user = user.id_user
                        ORDER BY id_pemesanan DESC");
 
 $pembelian = $stmt2->fetchAll(PDO::FETCH_ASSOC);

@@ -171,15 +171,8 @@ foreach ($result as $data_kursi) {
                       <?php endforeach; ?>
                     </select>
                     </div>
-                
-                  <!-- <div class="layout-seat" style="margin-top: 15px;">
-                    <img style="width: 100%;" src="theme/dist/img/coba-layout.png">
-                  </div> -->
-  </div>
-</div>
 
-
-<input type="hidden" name="id_film" value="<?php echo $film['id_film']; ?>">
+                  <input type="hidden" name="id_film" value="<?php echo $film['id_film']; ?>">
 
                   <div class="card-body p-3">
                   <table class="table table-bordered">
@@ -193,34 +186,33 @@ foreach ($result as $data_kursi) {
                     <?php foreach ($kursi_terisi as $kursi): ?>
                   <tr>
                       <td><?php echo $kursi?></td>
-                      <td>Terisi</td>
+                      <td>Sudah Terisi</td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
                 </table>
                   </div>
 
-                  <div class="form-group text-center">
-  <label>Pilih Kursi</label><br>
-  <?php
-  $rows = range('A', 'J'); // A sampai J
-  $cols = range(1, 8);    // 1 sampai 10
-  foreach ($rows as $row) {
-      foreach ($cols as $col) {
-          $seat = $row . $col;
-          echo "<label><input type='checkbox' name='kursi[]' value='$seat'> $seat</label>";
-          if ($col == 4) {
-            echo "<span style='display: inline-block; width: 30px;'></span>";
-        }
-      }
-      echo "<br>";
-  }
-  ?>
-</div>
+                <div class="form-group text-center">
+                  <label>Pilih Kursi</label><br>
+                  <?php
+                  $rows = range('A', 'J'); // A sampai J
+                  $cols = range(1, 8);    // 1 sampai 10
+                  foreach ($rows as $row) {
+                    foreach ($cols as $col) {
+                    $seat = $row . $col;
+                    echo "<label><input type='checkbox' name='kursi[]' value='$seat'> $seat</label>";
+                    if ($col == 4) {
+                    echo "<span style='display: inline-block; width: 30px;'></span>";
+                      }
+                    }
+                      echo "<br>";
+                  } ?>
+                </div>
 
             <button type="submit" class="btn btn-block btn-secondary d-block">Simpan</button>
+            
             </form>
-
             
             <!-- /.card -->
           </section>
@@ -232,13 +224,7 @@ foreach ($result as $data_kursi) {
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer> -->
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

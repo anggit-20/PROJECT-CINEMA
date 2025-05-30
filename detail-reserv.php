@@ -236,7 +236,9 @@ if (isset($_SESSION['kode_pemesanan'])) {
                       <!-- <label class="input-group-text">Upload</label> -->
                     </div>
                   </div>
+                  <div class="text-center">
                   <button type="submit" name="upload_bukti" class="btn btn-secondary mt-2" style="width: 200px;">Kirim Bukti</button>
+                  </div>
                   </form>
                   <?php else: ?>
                   <div class="alert alert-danger">Data pemesanan tidak ditemukan.</div>
