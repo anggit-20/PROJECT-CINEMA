@@ -96,6 +96,14 @@ foreach ($result as $data_kursi) {
           <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
+          <a href="index-cineplex.php" class="d-block">Home</a>
+        </div>
+      </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="theme/dist/img/apps.png">
+        </div>
+        <div class="info">
           <a href="#" class="d-block">Log Out</a>
         </div>
       </div>
@@ -201,7 +209,8 @@ foreach ($result as $data_kursi) {
                   foreach ($rows as $row) {
                     foreach ($cols as $col) {
                     $seat = $row . $col;
-                    echo "<label><input type='checkbox' name='kursi[]' value='$seat'> $seat</label>";
+                    $disabled = in_array($seat, $kursi_terisi) ? 'disabled' : '';
+                    echo "<label><input type='checkbox' name='kursi[]' value='$seat' $disabled> $seat</label>";
                     if ($col == 4) {
                     echo "<span style='display: inline-block; width: 30px;'></span>";
                       }

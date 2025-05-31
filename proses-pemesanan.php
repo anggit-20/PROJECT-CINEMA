@@ -12,10 +12,6 @@ if (!isset($_SESSION['id_user'])) {
 } 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     echo "<pre>";
-// print_r($_POST);
-// echo "</pre>";
-// exit;
 
     $id_user = $_SESSION['id_user']; // menambhakan id_user yang login ke $pemesanan
     $jumlah_tiket = $_POST['jumlah_tiket'];
@@ -30,12 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $film = $stmtHarga->fetch(PDO::FETCH_ASSOC);
     $harga = $film['harga'];
 
-//     echo "Harga: $harga <br>";
-// echo "Jumlah Tiket: $jumlah_tiket <br>";
-// echo "Total: " . ($harga * $jumlah_tiket) . "<br>";
-// exit;
-
-
     //hitung total
     $total = $harga * $jumlah_tiket * 1000;
 
@@ -44,14 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         //menggabungkan array kursi terpilih jadi string
         $kursi_terpilih = implode(',', $_POST['kursi']);
+        // $kursi_conflict = [];
 
         foreach ($_POST['kursi'] as $kursi) {
             $stmt = $conn->prepare("SELECT * FROM pemesanan WHERE id_film = ? AND jam_tayang = ? AND kursi = ?");
             $stmt->execute([$id_film, $jam_tayang, $kursi]);
 
-            if ($stmt->rowCount() > 0) { 
-                echo "Kursi $kursi sudah terisi!<br>";
-            } 
+            // if ($stmt->rowCount() > 0) { 
+            //     $kursi_conflict[] = $kursi;
+            // } 
                 
         }
     } else {

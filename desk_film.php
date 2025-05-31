@@ -86,6 +86,14 @@ if (isset($_GET['id'])) {
           <img src="theme/dist/img/apps.png">
         </div>
         <div class="info">
+          <a href="index-cineplex.php" class="d-block">Home</a>
+        </div>
+      </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="theme/dist/img/apps.png">
+        </div>
+        <div class="info">
           <a href="#" class="d-block">Log Out</a>
         </div>
       </div>

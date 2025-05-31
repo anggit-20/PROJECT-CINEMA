@@ -59,15 +59,20 @@ if (isset($_POST['upload_bukti'])) {
         header("Location: tiket-saya.php?id_pemesanan=" . $id_pemesanan);
         exit;
     } else {
-        header("Location: index-cineplex.php");
-        exit;
-    }
+    // Hapus data pemesanan yang melewati batas waktu
+    $stmtDelete = $conn->prepare("DELETE FROM pemesanan WHERE id_pemesanan = ?");
+    $stmtDelete->execute([$id_pemesanan]);
+
+    header("Location: index-cineplex.php");
+    exit;
+}
 }
 
 // Ambil dari session kalau sudah pernah upload
 if (isset($_SESSION['kode_pemesanan'])) {
     $kode_pemesanan = $_SESSION['kode_pemesanan'];
 }
+
 ?>
 
 <!DOCTYPE html>

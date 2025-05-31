@@ -99,7 +99,7 @@ if (!isset($_SESSION['id_user'])) {
           <img src="theme/dist/img/apps.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="index-cineplex.php" class="d-block">Dashboard</a>
+          <a href="index-cineplex.php" class="d-block">Home</a>
         </div>
       </div>
 
