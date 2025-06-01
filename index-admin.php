@@ -31,6 +31,18 @@ ORDER BY tanggal DESC
 ");
 $data_pendapatan = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
+$sql = "INSERT INTO pendapatan (tanggal, total) 
+                VALUES (:tanggal, :total_pendapatan)";
+
+$stmt_insert = $conn->prepare($sql);
+
+foreach ($data_pendapatan as $row) {
+    $stmt_insert->execute([
+        ':tanggal' => $row['tanggal'],
+        ':total_pendapatan' => $row['total_pendapatan']
+    ]);
+}
+
 ?>
 
 <?php
@@ -356,13 +368,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
             <!-- /.card -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

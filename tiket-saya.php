@@ -106,7 +106,7 @@ $kode_pemesanan = $pemesanan['kode_pemesanan'] ?? "Belum tersedia";
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -129,7 +129,7 @@ $kode_pemesanan = $pemesanan['kode_pemesanan'] ?? "Belum tersedia";
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="card">
+        <div class="card" style="background-color: #99090c;">
         
             <div class="card-header">
             <h4 class="card-title">
@@ -177,13 +177,12 @@ $kode_pemesanan = $pemesanan['kode_pemesanan'] ?? "Belum tersedia";
                     </div>
                   </div>
                   <div class="">
-                    <p><strong>Kode Pemesanan : <?php echo $pemesanan['kode_pemesanan']; ?></strong></p>
-                    <p class="mt-0" style="color: red;">Simpan kode anda untuk verifikasi offline</p>
+                    <p class="m-0"><strong>Kode Pemesanan : <?php echo $pemesanan['kode_pemesanan']; ?></strong></p>
+                    <p class="mt-0" style="color: black;">Simpan kode anda untuk verifikasi offline</p>
                   </div>
-                  <a href="index-user.php?id_pemesanan=<?= $id_pemesanan ?>" class="btn btn-secondary mt-2" style="width: 200px;">
-  Selesai
-</a>
-
+                  <div class="text-center">
+                  <a href="index-user.php?id_pemesanan=<?= $id_pemesanan ?>" class="btn btn-secondary mt-2" style="width: 200px;">Selesai</a>
+                  </div>
                   </form>
                   
             </div>

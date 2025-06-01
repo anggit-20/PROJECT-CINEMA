@@ -23,6 +23,18 @@ if (!$pemesanan) {
     exit;
 }
 
+// // HAPUS OTOMATIS JIKA LEBIH DARI 5 MENIT DAN BELUM UPLOAD
+// $sekarang = time();
+// $waktu_pesan = isset($pemesanan['waktu_pesan']) ? strtotime($pemesanan['waktu_pesan']) : time();
+
+// if ($sekarang - $waktu_pesan > 300 && empty($pemesanan['bukti_pembayaran'])) {
+//     $stmtDelete = $conn->prepare("DELETE FROM pemesanan WHERE id_pemesanan = ?");
+//     $stmtDelete->execute([$id_pemesanan]);
+
+//     header("Location: index-cineplex.php");
+//     exit;
+// }
+
 $stmt2 = $conn->prepare("SELECT * FROM film WHERE id_film = ?");
 $stmt2->execute([$pemesanan['id_film']]);
 $film = $stmt2->fetch(PDO::FETCH_ASSOC);
@@ -59,13 +71,9 @@ if (isset($_POST['upload_bukti'])) {
         header("Location: tiket-saya.php?id_pemesanan=" . $id_pemesanan);
         exit;
     } else {
-    // Hapus data pemesanan yang melewati batas waktu
-    $stmtDelete = $conn->prepare("DELETE FROM pemesanan WHERE id_pemesanan = ?");
-    $stmtDelete->execute([$id_pemesanan]);
-
-    header("Location: index-cineplex.php");
-    exit;
-}
+      header("Location: index-cineplex.php");
+      exit;
+  }
 }
 
 // Ambil dari session kalau sudah pernah upload
@@ -80,7 +88,7 @@ if (isset($_SESSION['kode_pemesanan'])) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1">
-  <title>Aneka Cinema | Detail Pemesanan</title>
+  <title>Aneka Cinema | Detail Pembelian</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -155,7 +163,7 @@ if (isset($_SESSION['kode_pemesanan'])) {
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper bg-black">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -169,7 +177,7 @@ if (isset($_SESSION['kode_pemesanan'])) {
               
             </ol>
           </div><!-- /.col -->
-          <button type="button" class="btn btn-block btn-primary" id="timerButton" style="width: 80px; margin: 10px;">05:00</button>
+          <button type="button" class="btn btn-block btn-secondary" id="timerButton" style="width: 80px; margin: 10px;">05:00</button>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -178,7 +186,7 @@ if (isset($_SESSION['kode_pemesanan'])) {
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="card">
+        <div class="card" style="background-color: #99090c;">
         
             <div class="card-header">
             <h4 class="card-title">
@@ -251,8 +259,8 @@ if (isset($_SESSION['kode_pemesanan'])) {
             </div>
         </div>
 
-        <div class="callout callout-warning text-center">
-                  <h5>Silahkan lakukan pembyaran</h5>
+        <div class="callout callout-warning text-center m-3" style="color: #000000;">
+                  <h5 class="m-0">Silahkan lakukan pembyaran</h5>
                   <p>Sebelum tenggat waktu habis!</p>
         </div>
             </div>
