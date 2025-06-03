@@ -11,6 +11,9 @@ if(!isset($email)) {
 <?php
 include 'koneksi.php';
 
+// $stmt = $conn->query("SELECT * FROM pendapatan ORDER BY tanggal DESC");
+// $pendapatan = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 $stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -42,6 +45,7 @@ foreach ($data_pendapatan as $row) {
         ':total_pendapatan' => $row['total_pendapatan']
     ]);
 }
+
 
 ?>
 
@@ -309,6 +313,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
                   <tr>
                     <th>Tanggal</th>
                     <th>Total Pendapatan</th>
+                    <!-- <th>Aksi</th> -->
                   </tr>
                   </thead>
 
@@ -317,6 +322,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
                   <tr>
                     <td><?php echo $row['tanggal']; ?></td>
                     <td><?php echo 'Rp ' . number_format($row['total_pendapatan'], 0, ',', '.'); ?></td>
+                    <!-- <td><a href="./hapus-pendapatan.php?tanggal=<?php echo $row['tanggal'] ?>" class="btn btn-danger">Hapus</a></td> -->
                   </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -324,7 +330,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
                   <tfoot>
                   <tr>
                   <th>Tanggal</th>
-                    <th>Total Pembayaran</th>
+                  <th>Total Pembayaran</th>
                     
                   </tr>
                   </tfoot>

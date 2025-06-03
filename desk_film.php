@@ -188,7 +188,7 @@ if (isset($_GET['id'])) {
 
 </div>
           
-            <button type="button" class="btn btn-block mt-3" style="background-color: #99090c;"><a href="form-reserv.php?id=<?= $film['id_film'] ?>" style=" color: white;">Buy Ticket</a></button>
+            <button type="button" class="btn btn-block mt-3" style="background-color: #99090c;"><a href="form-reserv.php?id=<?= $film['id_film'] ?>" style=" color: white;">Beli Tiket</a></button>
           
         <!-- /.row -->
         <!-- Main row -->
