@@ -14,7 +14,7 @@ include 'koneksi.php';
 $stmt = $conn->query("SELECT * FROM film ORDER BY id_film DESC");
 $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt2 = $conn->query("SELECT pemesanan.*, film.judul, film.studio 
+$stmt2 = $conn->query("SELECT pemesanan.*, film.judul, film.studio, user.email
                        FROM pemesanan 
                        JOIN film ON pemesanan.id_film = film.id_film 
                        JOIN user ON pemesanan.id_user = user.id_user
