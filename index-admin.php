@@ -90,7 +90,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake brand-image img-circle elevation-3" src="theme/dist/img/aneka-cinema.png" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -151,7 +151,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
           </div><!-- /.col -->
           <!-- <button type="button" class="btn btn-block btn-primary"><a href="form-add-movie.php">Add New Movie</a></button> -->
           <button type="button" class="btn btn-block btn-danger" style="border-radius: 20px;">
-  <a href="form-add-movie.php" style="color: white; text-decoration: none;">Add New Movie</a>
+  <a href="form-add-movie.php" style="color: white; text-decoration: none;">Tambahkan Film Baru</a>
 </button>
 
         </div><!-- /.row -->
@@ -230,6 +230,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
                     <th>Total Pembayaran</th>
                     <th>Bukti Pembayaran</th>
                     <th>Kode Pemesanan</th>
+                    <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -245,6 +246,7 @@ $donut_data = $stmt4->fetchAll(PDO::FETCH_ASSOC);
                     <td><?php echo $pemesanan['total']; ?></td>
                     <td><?php echo $pemesanan['bukti_pembayaran']; ?></td>
                     <td><?php echo $pemesanan['kode_pemesanan']; ?></td>
+                    <td><a href="./hapus-pembelian.php?id_pemesanan=<?php echo $pemesanan['id_pemesanan'] ?>" class="btn btn-danger">Hapus</a>
                   </tr>
                   <?php endforeach; ?>
                   </tbody>
